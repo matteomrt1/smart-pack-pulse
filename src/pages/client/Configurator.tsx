@@ -70,7 +70,7 @@ export default function Configurator() {
   const catIcon = (cat: string) => {
     if (cat === 'boxes') return <Box className="w-4 h-4" />;
     if (cat === 'protective') return <Shield className="w-4 h-4" />;
-    return <Tape className="w-4 h-4" />;
+    return <Scissors className="w-4 h-4" />;
   };
 
   return (
