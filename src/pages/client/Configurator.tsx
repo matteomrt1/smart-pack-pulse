@@ -7,7 +7,7 @@ import { Badge } from '@/components/ui/badge';
 import { cn } from '@/lib/utils';
 import { PackagingInput, MaterialSuggestion } from '@/types';
 import { mockProducts } from '@/data/mockData';
-import { ArrowLeft, ArrowRight, Package, Leaf, Check, Box, Shield, Tape } from 'lucide-react';
+import { ArrowLeft, ArrowRight, Package, Leaf, Check, Box, Shield, Scissors } from 'lucide-react';
 import { PackagingSchema2D } from '@/components/configurator/PackagingSchema2D';
 
 const steps = [
