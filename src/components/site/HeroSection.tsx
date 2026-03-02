@@ -1,18 +1,20 @@
 import { motion } from 'framer-motion';
+import heroVideo from '@/assets/hero-video.mp4';
 import heroPoster from '@/assets/hero-poster.jpg';
 
 export function HeroSection() {
   return (
     <section className="relative w-screen h-screen overflow-hidden" id="hero">
-      {/* Background Image (since we don't have video, use image with subtle animation) */}
+      {/* Background Video */}
       <div className="absolute inset-0 overflow-hidden">
-        <motion.img
-          src={heroPoster}
-          alt="Imballaggi Bustesi - magazzino"
+        <video
+          src={heroVideo}
+          poster={heroPoster}
+          autoPlay
+          muted
+          loop
+          playsInline
           className="absolute inset-0 w-full h-full object-cover"
-          initial={{ scale: 1.05 }}
-          animate={{ scale: 1 }}
-          transition={{ duration: 8, ease: 'easeOut' }}
         />
         <div className="absolute inset-0 bg-gradient-to-b from-black/15 via-black/30 to-black/70 pointer-events-none" />
       </div>
