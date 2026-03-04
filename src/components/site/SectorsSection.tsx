@@ -53,11 +53,11 @@ export function SectorsSection() {
   const next = () => setCurrent(c => Math.min(sectors.length - 1, c + 1));
 
   return (
-    <section className="py-[60px] pb-20 bg-white text-[#111] text-center" id="sectorsTrack">
-      <h2 className="text-[clamp(26px,3vw,34px)] font-bold tracking-[0.06em] uppercase mb-2 text-[#ef1717]">
+    <section className="py-24 bg-card text-foreground text-center" id="sectorsTrack">
+      <h2 className="text-[clamp(26px,3vw,34px)] font-bold tracking-[0.06em] uppercase mb-2 text-primary">
         Settori che Serviamo
       </h2>
-      <p className="text-[13px] font-semibold tracking-[0.18em] uppercase text-[#9b9b9b] mb-6">
+      <p className="text-[13px] font-semibold tracking-[0.18em] uppercase text-muted-foreground mb-6">
         Soluzioni dedicate per ogni industria
       </p>
 
@@ -68,9 +68,9 @@ export function SectorsSection() {
             <div
               key={i}
               onClick={() => setCurrent(i)}
-              className={`relative flex-[0_0_70vw] max-w-[960px] h-[min(60vh,550px)] rounded-[28px] overflow-hidden cursor-pointer transition-all duration-[600ms] ${
+              className={`relative flex-[0_0_70vw] max-w-[960px] h-[min(60vh,550px)] rounded-2xl overflow-hidden cursor-pointer transition-all duration-[600ms] ${
                 i === current
-                  ? 'scale-100 opacity-100 shadow-[0_32px_80px_rgba(0,0,0,0.25)] z-[2]'
+                  ? 'scale-100 opacity-100 shadow-[0_32px_80px_rgba(0,0,0,0.2)] z-[2]'
                   : 'scale-[0.85] opacity-45'
               }`}
             >
@@ -99,13 +99,13 @@ export function SectorsSection() {
         {/* Arrows */}
         <button
           onClick={prev}
-          className="absolute left-[18px] top-1/2 -translate-y-1/2 w-11 h-11 rounded-full border border-black/30 bg-white/95 text-[#111] flex items-center justify-center cursor-pointer transition-all duration-300 hover:bg-black/5 hover:border-[#111] hover:shadow-[0_4px_10px_rgba(0,0,0,0.15)] hover:scale-105 z-[5]"
+          className="absolute left-[18px] top-1/2 -translate-y-1/2 w-11 h-11 rounded-full border border-border bg-card/95 text-foreground flex items-center justify-center cursor-pointer transition-all duration-300 hover:bg-primary/5 hover:border-primary hover:shadow-md hover:scale-105 z-[5]"
         >
           <ChevronLeft className="w-5 h-5" />
         </button>
         <button
           onClick={next}
-          className="absolute right-[18px] top-1/2 -translate-y-1/2 w-11 h-11 rounded-full border border-black/30 bg-white/95 text-[#111] flex items-center justify-center cursor-pointer transition-all duration-300 hover:bg-black/5 hover:border-[#111] hover:shadow-[0_4px_10px_rgba(0,0,0,0.15)] hover:scale-105 z-[5]"
+          className="absolute right-[18px] top-1/2 -translate-y-1/2 w-11 h-11 rounded-full border border-border bg-card/95 text-foreground flex items-center justify-center cursor-pointer transition-all duration-300 hover:bg-primary/5 hover:border-primary hover:shadow-md hover:scale-105 z-[5]"
         >
           <ChevronRight className="w-5 h-5" />
         </button>

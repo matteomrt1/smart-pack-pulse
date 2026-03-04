@@ -8,7 +8,7 @@ import { SiteFooter } from '@/components/site/SiteFooter';
 
 export default function Landing() {
   return (
-    <div className="min-h-screen bg-[#e5e7eb]" style={{ fontFamily: 'system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif' }}>
+    <div className="min-h-screen bg-background">
       <SiteHeader />
       <HeroSection />
       <ProductsSection />

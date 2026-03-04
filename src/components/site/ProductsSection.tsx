@@ -64,65 +64,65 @@ function ProductCard({ product, delay }: { product: Product; delay: number }) {
 
   return (
     <motion.article
-      className="group relative bg-white rounded-xl border border-slate-200 shadow-sm hover:shadow-xl transition-all duration-300 overflow-hidden flex flex-col h-[420px]"
+      className="group relative bg-card rounded-xl border border-border shadow-sm hover:shadow-md transition-all duration-300 overflow-hidden flex flex-col h-[420px]"
       initial={{ opacity: 0, y: 8 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ delay: delay * 0.05, duration: 0.4 }}
     >
       {/* Image */}
-      <div className="relative w-full h-56 overflow-hidden bg-gray-50 p-6 flex items-center justify-center">
+      <div className="relative w-full h-56 overflow-hidden bg-muted p-6 flex items-center justify-center">
         {product.eco && (
-          <span className="absolute top-3 left-3 bg-green-100 text-green-800 text-xs font-bold px-2 py-1 rounded-md z-20 uppercase tracking-wide">
+          <span className="absolute top-3 left-3 bg-accent/10 text-accent text-xs font-bold px-2 py-1 rounded-lg z-20 uppercase tracking-wide">
             Eco-Friendly
           </span>
         )}
         {product.badge && !product.eco && (
-          <span className="absolute top-3 left-3 bg-blue-100 text-blue-800 text-xs font-bold px-2 py-1 rounded-md z-20 uppercase tracking-wide">
+          <span className="absolute top-3 left-3 bg-primary/10 text-primary text-xs font-bold px-2 py-1 rounded-lg z-20 uppercase tracking-wide">
             {product.badge}
           </span>
         )}
-        <div className="w-20 h-20 bg-slate-200 rounded-lg flex items-center justify-center text-slate-400 text-xs">
+        <div className="w-20 h-20 bg-secondary rounded-xl flex items-center justify-center text-muted-foreground text-xs">
           {product.code}
         </div>
-        <button className="absolute top-3 right-3 w-8 h-8 bg-white rounded-full shadow-md flex items-center justify-center text-slate-400 hover:text-red-500 hover:bg-red-50 transition-colors z-20 opacity-0 group-hover:opacity-100 translate-y-2 group-hover:translate-y-0 duration-300">
+        <button className="absolute top-3 right-3 w-8 h-8 bg-card rounded-full shadow-md flex items-center justify-center text-muted-foreground hover:text-primary hover:bg-primary/5 transition-colors z-20 opacity-0 group-hover:opacity-100 translate-y-2 group-hover:translate-y-0 duration-300">
           <Heart className="w-5 h-5" />
         </button>
       </div>
 
       {/* Info */}
-      <div className="p-5 flex-1 flex flex-col relative bg-white z-20">
+      <div className="p-5 flex-1 flex flex-col relative bg-card z-20">
         <div className="mb-1">
-          <p className="text-xs font-bold text-slate-400 uppercase tracking-wider mb-1">Cod. {product.code}</p>
-          <h3 className="text-lg font-bold text-slate-800 leading-tight mb-2 group-hover:text-blue-600 transition-colors">
+          <p className="text-xs font-bold text-muted-foreground uppercase tracking-wider mb-1">Cod. {product.code}</p>
+          <h3 className="text-lg font-bold text-foreground leading-tight mb-2 group-hover:text-primary transition-colors">
             {product.name}
           </h3>
         </div>
-        <p className="text-sm text-slate-500 line-clamp-2 mb-4 transition-opacity duration-300 group-hover:opacity-0">
+        <p className="text-sm text-muted-foreground line-clamp-2 mb-4 transition-opacity duration-300 group-hover:opacity-0">
           {product.desc}
         </p>
         <div className="mt-auto flex items-end justify-between transition-opacity duration-300 group-hover:opacity-0">
           <div>
-            <span className="text-xs text-slate-400">A partire da</span>
-            <div className="text-xl font-bold text-slate-900">{product.price}</div>
+            <span className="text-xs text-muted-foreground">A partire da</span>
+            <div className="text-xl font-bold text-foreground">{product.price}</div>
           </div>
-          <button className="w-10 h-10 rounded-full bg-slate-100 flex items-center justify-center text-slate-600">
+          <button className="w-10 h-10 rounded-full bg-secondary flex items-center justify-center text-foreground">
             <Plus className="w-5 h-5" />
           </button>
         </div>
 
         {/* Variant Panel (on hover) */}
-        <div className="absolute inset-x-0 bottom-0 bg-white border-t border-slate-100 p-5 shadow-[0_-5px_15px_rgba(0,0,0,0.05)] transform translate-y-full group-hover:translate-y-0 h-[220px] flex flex-col justify-between transition-transform duration-300">
+        <div className="absolute inset-x-0 bottom-0 bg-card border-t border-border p-5 shadow-[0_-5px_15px_rgba(0,0,0,0.05)] transform translate-y-full group-hover:translate-y-0 h-[220px] flex flex-col justify-between transition-transform duration-300">
           <div className="space-y-4">
             {product.colors && product.colors.length > 0 && (
               <div>
-                <span className="text-xs font-semibold text-slate-500 uppercase block mb-2">Colore</span>
+                <span className="text-xs font-semibold text-muted-foreground uppercase block mb-2">Colore</span>
                 <div className="flex gap-2">
                   {product.colors.map((c, i) => (
                     <button
                       key={c.name}
                       title={c.name}
                       onClick={() => setSelectedColor(i)}
-                      className={`w-6 h-6 rounded-full border border-slate-200 transition-transform hover:scale-110 ${selectedColor === i ? 'ring-2 ring-white ring-offset-2 ring-offset-slate-900' : ''}`}
+                      className={`w-6 h-6 rounded-full border border-border transition-transform hover:scale-110 ${selectedColor === i ? 'ring-2 ring-primary ring-offset-2' : ''}`}
                       style={{ backgroundColor: c.hex }}
                     />
                   ))}
@@ -130,13 +130,13 @@ function ProductCard({ product, delay }: { product: Product; delay: number }) {
               </div>
             )}
             <div>
-              <span className="text-xs font-semibold text-slate-500 uppercase block mb-2">Misura</span>
+              <span className="text-xs font-semibold text-muted-foreground uppercase block mb-2">Misura</span>
               <div className="flex flex-wrap gap-2">
                 {product.sizes.map((s, i) => (
                   <button
                     key={s}
                     onClick={() => setSelectedSize(i)}
-                    className={`px-2 py-1 text-xs border rounded transition-colors ${selectedSize === i ? 'bg-slate-900 text-white border-slate-900' : 'bg-white text-slate-600 border-slate-200'}`}
+                    className={`px-2 py-1 text-xs border rounded-lg transition-colors ${selectedSize === i ? 'bg-primary text-primary-foreground border-primary' : 'bg-card text-foreground border-border'}`}
                   >
                     {s}
                   </button>
@@ -144,12 +144,12 @@ function ProductCard({ product, delay }: { product: Product; delay: number }) {
               </div>
             </div>
           </div>
-          <div className="pt-3 mt-2 border-t border-slate-100 flex items-center justify-between">
+          <div className="pt-3 mt-2 border-t border-border flex items-center justify-between">
             <div className="flex flex-col">
-              <span className="text-[10px] text-slate-400 uppercase font-bold">Prezzo Totale</span>
-              <span className="text-lg font-bold text-slate-900">{product.price}</span>
+              <span className="text-[10px] text-muted-foreground uppercase font-bold">Prezzo Totale</span>
+              <span className="text-lg font-bold text-foreground">{product.price}</span>
             </div>
-            <button className="bg-blue-600 hover:bg-blue-700 text-white text-sm font-medium px-4 py-2 rounded-lg shadow-sm transition-colors flex items-center gap-2">
+            <button className="bg-primary hover:bg-primary/90 text-primary-foreground text-sm font-medium px-4 py-2 rounded-xl shadow-sm transition-colors flex items-center gap-2">
               <span>Aggiungi</span>
               <ShoppingCart className="w-4 h-4" />
             </button>
@@ -164,9 +164,9 @@ export function ProductsSection() {
   const [active, setActive] = useState('nastri-adesivi');
 
   return (
-    <section className="bg-white text-[#111] py-8 pb-10" id="productCategories">
+    <section className="bg-card text-foreground py-24" id="productCategories">
       <div className="text-center px-10 mb-5">
-        <p className="text-xl font-medium tracking-[0.06em] uppercase text-[#ef1717] mb-8">
+        <p className="text-xl font-medium tracking-[0.06em] uppercase text-primary mb-8">
           Le nostre soluzioni per imballaggi
         </p>
       </div>
@@ -178,10 +178,10 @@ export function ProductsSection() {
             <button
               key={cat.id}
               onClick={() => setActive(cat.id)}
-              className={`inline-flex items-center gap-2.5 px-4 py-2 rounded-full text-[0.8rem] tracking-[0.12em] uppercase whitespace-nowrap transition-all duration-200 ${
+              className={`inline-flex items-center gap-2.5 px-4 py-2 rounded-xl text-[0.8rem] tracking-[0.12em] uppercase whitespace-nowrap transition-all duration-200 ${
                 active === cat.id
-                  ? 'bg-[#111] text-white'
-                  : 'bg-[#f5f5f5] text-[#111] hover:bg-[#111] hover:text-white hover:-translate-y-px'
+                  ? 'bg-primary text-primary-foreground'
+                  : 'bg-secondary text-foreground hover:bg-primary hover:text-primary-foreground hover:-translate-y-px'
               }`}
             >
               <span>{cat.label}</span>

@@ -1,6 +1,6 @@
 import { useState, useEffect, useCallback } from 'react';
 import { Link } from 'react-router-dom';
-import { Search, X, Menu } from 'lucide-react';
+import { Search, X } from 'lucide-react';
 import { ContactPanel } from './ContactPanel';
 import { MegaMenu } from './MegaMenu';
 import { SearchOverlay } from './SearchOverlay';
@@ -42,8 +42,8 @@ export function SiteHeader() {
       <header
         className={`fixed top-0 left-0 w-full z-[1000] grid grid-cols-[1fr_auto_1fr] items-center gap-2.5 transition-all duration-300 ${
           isCompact
-            ? 'bg-white/[0.98] text-[#111] shadow-[0_2px_12px_rgba(0,0,0,0.15)] px-3.5 py-2.5'
-            : 'mix-blend-difference text-white px-3.5 py-2.5 md:px-10 md:py-5'
+            ? 'bg-white/[0.98] backdrop-blur-md text-foreground border-b border-border px-3.5 py-2.5'
+            : 'text-white px-3.5 py-2.5 md:px-10 md:py-5 [text-shadow:0_1px_6px_rgba(0,0,0,0.4)]'
         }`}
       >
         <div className="flex items-center gap-2.5 justify-self-start">

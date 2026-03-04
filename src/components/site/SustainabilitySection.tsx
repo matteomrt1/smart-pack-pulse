@@ -16,9 +16,9 @@ const cards = [
 
 export function SustainabilitySection() {
   return (
-    <section className="bg-white text-[#111] py-12 pb-14" id="sostenibilita">
+    <section className="bg-background text-foreground py-24" id="sostenibilita">
       <div className="max-w-[1400px] mx-auto px-5 md:px-10">
-        <p className="text-[0.8rem] tracking-[0.16em] uppercase text-[#777] mb-2">Sostenibilità</p>
+        <p className="text-[0.8rem] tracking-[0.16em] uppercase text-muted-foreground mb-2">Sostenibilità</p>
         <h2 className="text-[clamp(1.8rem,2.4vw,2.2rem)] font-semibold tracking-[0.12em] uppercase mb-7">
           Soluzioni Eco-Friendly
         </h2>
@@ -27,7 +27,7 @@ export function SustainabilitySection() {
           {cards.map((card, i) => (
             <div
               key={i}
-              className="group relative flex-1 min-h-[230px] md:min-h-[520px] rounded-3xl overflow-hidden cursor-pointer bg-black transition-all duration-500 hover:-translate-y-1.5 hover:shadow-[0_18px_45px_rgba(0,0,0,0.25)]"
+              className="group relative flex-1 min-h-[230px] md:min-h-[520px] rounded-2xl overflow-hidden cursor-pointer bg-foreground/5 transition-all duration-500 hover:-translate-y-1.5 hover:shadow-[0_18px_45px_rgba(0,0,0,0.2)]"
             >
               {/* BG image */}
               <div
