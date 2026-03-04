@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import { X, Phone, Mail, MessageCircle, MapPin, ChevronDown } from 'lucide-react';
+import { X, Phone, Mail, MessageCircle, ChevronDown } from 'lucide-react';
 import { useState } from 'react';
 
 interface ContactPanelProps {
@@ -29,7 +29,7 @@ export function ContactPanel({ open, onClose }: ContactPanelProps) {
       }`}
     >
       <div className="flex-1 bg-black/45" onClick={onClose} />
-      <div className="w-[60vw] max-w-[720px] min-w-[320px] md:min-w-[480px] h-screen bg-[#ef1717] text-white flex flex-col p-7 md:p-11 shadow-[-16px_0_40px_rgba(0,0,0,0.3)]">
+      <div className="w-[60vw] max-w-[720px] min-w-[320px] md:min-w-[480px] h-screen bg-primary text-primary-foreground flex flex-col p-7 md:p-11 shadow-[-16px_0_40px_rgba(0,0,0,0.2)]">
         <header className="flex items-center justify-between gap-4 mb-8">
           <h2 className="text-2xl tracking-[0.22em] uppercase">Contattaci</h2>
           <button onClick={onClose} className="w-8 h-8 rounded-full border border-white/70 flex items-center justify-center" aria-label="Chiudi">
