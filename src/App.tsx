@@ -14,6 +14,7 @@ import AdminDashboard from '@/pages/admin/AdminDashboard';
 import AdminCatalog from '@/pages/admin/AdminCatalog';
 import AdminClients from '@/pages/admin/AdminClients';
 import NotFound from './pages/NotFound';
+import { HashRouter as Router, Routes, Route, Navigate } from "react-router-dom";
 
 const queryClient = new QueryClient();
 
@@ -26,7 +27,7 @@ const App = () => {
       <TooltipProvider>
         <Toaster />
         <Sonner />
-        <BrowserRouter>
+        <Router>
           <Routes>
             <Route path="/" element={<Landing />} />
 
