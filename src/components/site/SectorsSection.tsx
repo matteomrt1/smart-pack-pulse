@@ -7,27 +7,27 @@ import sectorAlimentare from '@/assets/sector-alimentare.jpg';
 const sectors = [
   {
     title: 'Industria della Logistica',
-    description: 'Soluzioni di imballaggio su misura per centri logistici, corrieri e magazzini. Nastri ad alte prestazioni, film estensibili e reggette per volumi elevati e velocità operative.',
+    description: 'Soluzioni di imballaggio su misura per centri logistici, corrieri e magazzini.',
     image: sectorLogistica,
   },
   {
     title: 'Industria Automobilistica',
-    description: 'Protezione professionale per componenti auto: nastri di mascheratura, film protettivi e imballaggi antigraffio per linee di produzione e aftermarket.',
+    description: 'Protezione professionale per componenti auto: nastri di mascheratura, film protettivi e imballaggi antigraffio.',
     image: sectorAutomotive,
   },
   {
     title: 'Industria Alimentare e Beverage',
-    description: 'Materiali certificati per il contatto alimentare, nastri e film conformi alle normative HACCP. Soluzioni igieniche e sostenibili per il settore food & beverage.',
+    description: 'Materiali certificati per il contatto alimentare, nastri e film conformi alle normative HACCP.',
     image: sectorAlimentare,
   },
   {
     title: 'Industria delle Costruzioni',
-    description: 'Nastri di mascheratura resistenti al calore, protezioni per superfici, film per cantieri. Soluzioni robuste per ambienti gravosi.',
+    description: 'Nastri di mascheratura resistenti al calore, protezioni per superfici, film per cantieri.',
     image: sectorLogistica,
   },
   {
     title: 'Allestimento Fiere e Negozi',
-    description: 'Nastri biadesivi, adesivi per allestimenti temporanei, materiali di confezionamento per retail e visual merchandising.',
+    description: 'Nastri biadesivi, adesivi per allestimenti temporanei, materiali per retail e visual merchandising.',
     image: sectorAutomotive,
   },
 ];
@@ -53,42 +53,39 @@ export function SectorsSection() {
   const next = () => setCurrent(c => Math.min(sectors.length - 1, c + 1));
 
   return (
-    <section className="py-24 bg-card text-foreground text-center" id="sectorsTrack">
-      <h2 className="text-[clamp(26px,3vw,34px)] font-bold tracking-[0.06em] uppercase mb-2 text-primary">
-        Settori che Serviamo
+    <section className="py-28 bg-secondary/30 text-foreground text-center" id="sectorsTrack">
+      <p className="text-[11px] tracking-[0.3em] uppercase text-muted-foreground mb-3 font-light">Settori</p>
+      <h2 className="text-[clamp(1.4rem,2.2vw,1.8rem)] font-light tracking-[0.08em] uppercase mb-10">
+        Le industrie che serviamo
       </h2>
-      <p className="text-[13px] font-semibold tracking-[0.18em] uppercase text-muted-foreground mb-6">
-        Soluzioni dedicate per ogni industria
-      </p>
 
       <div className="relative max-w-[1400px] mx-auto px-5 md:px-10">
-        {/* Track */}
-        <div ref={trackRef} className="flex gap-10 overflow-hidden scroll-smooth py-5 pb-2.5">
+        <div ref={trackRef} className="flex gap-8 overflow-hidden scroll-smooth py-4">
           {sectors.map((sector, i) => (
             <div
               key={i}
               onClick={() => setCurrent(i)}
-              className={`relative flex-[0_0_70vw] max-w-[960px] h-[min(60vh,550px)] rounded-2xl overflow-hidden cursor-pointer transition-all duration-[600ms] ${
+              className={`relative flex-[0_0_70vw] max-w-[960px] h-[min(55vh,500px)] rounded-3xl overflow-hidden cursor-pointer transition-all duration-700 ${
                 i === current
-                  ? 'scale-100 opacity-100 shadow-[0_32px_80px_rgba(0,0,0,0.2)] z-[2]'
-                  : 'scale-[0.85] opacity-45'
+                  ? 'scale-100 opacity-100 z-[2]'
+                  : 'scale-[0.88] opacity-40'
               }`}
             >
               <img
                 src={sector.image}
                 alt={sector.title}
-                className={`absolute inset-0 w-full h-full object-cover scale-[1.05] transition-all duration-[600ms] ${
-                  i !== current ? 'blur-[2px] brightness-[0.6] scale-[1.03]' : ''
+                className={`absolute inset-0 w-full h-full object-cover scale-100 transition-all duration-700 ${
+                  i !== current ? 'blur-[1px] brightness-[0.65]' : ''
                 }`}
               />
-              <div className={`absolute inset-0 bg-gradient-to-b from-black/55 via-black/35 to-black/60 pointer-events-none transition-opacity duration-[600ms] z-[1] ${i === current ? 'opacity-70' : 'opacity-90'}`} />
+              <div className={`absolute inset-0 bg-gradient-to-b from-black/40 via-transparent to-black/50 pointer-events-none z-[1]`} />
 
-              <h3 className="absolute top-[22px] left-[26px] right-[26px] z-[2] text-left text-[clamp(18px,2.1vw,22px)] font-semibold tracking-[0.04em] text-white">
+              <h3 className="absolute top-6 left-7 right-7 z-[2] text-left text-[13px] font-normal tracking-[0.15em] uppercase text-white/90">
                 {sector.title}
               </h3>
 
-              <p className={`absolute left-[26px] right-[26px] bottom-6 text-[13px] leading-[1.5] text-left text-white z-[2] transition-all duration-500 ${
-                i === current ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-3'
+              <p className={`absolute left-7 right-7 bottom-7 text-[14px] leading-relaxed text-left text-white/70 font-light z-[2] transition-all duration-500 ${
+                i === current ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-2'
               }`}>
                 {sector.description}
               </p>
@@ -96,18 +93,17 @@ export function SectorsSection() {
           ))}
         </div>
 
-        {/* Arrows */}
         <button
           onClick={prev}
-          className="absolute left-[18px] top-1/2 -translate-y-1/2 w-11 h-11 rounded-full border border-border bg-card/95 text-foreground flex items-center justify-center cursor-pointer transition-all duration-300 hover:bg-primary/5 hover:border-primary hover:shadow-md hover:scale-105 z-[5]"
+          className="absolute left-5 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-white/80 backdrop-blur text-foreground flex items-center justify-center cursor-pointer transition-all duration-300 hover:bg-white hover:scale-105 z-[5]"
         >
-          <ChevronLeft className="w-5 h-5" />
+          <ChevronLeft className="w-4 h-4" />
         </button>
         <button
           onClick={next}
-          className="absolute right-[18px] top-1/2 -translate-y-1/2 w-11 h-11 rounded-full border border-border bg-card/95 text-foreground flex items-center justify-center cursor-pointer transition-all duration-300 hover:bg-primary/5 hover:border-primary hover:shadow-md hover:scale-105 z-[5]"
+          className="absolute right-5 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-white/80 backdrop-blur text-foreground flex items-center justify-center cursor-pointer transition-all duration-300 hover:bg-white hover:scale-105 z-[5]"
         >
-          <ChevronRight className="w-5 h-5" />
+          <ChevronRight className="w-4 h-4" />
         </button>
       </div>
     </section>
