@@ -64,6 +64,17 @@ const sectors = [
 export function SectorsSection() {
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
 
+  // Determine which row the active card is in (4 cols desktop, 2 cols mobile)
+  const activeRow4 = activeIndex !== null ? Math.floor(activeIndex / 4) : -1;
+  const activeRow2 = activeIndex !== null ? Math.floor(activeIndex / 2) : -1;
+  const activeSector = activeIndex !== null ? sectors[activeIndex] : null;
+
+  // Split sectors into rows of 4 (desktop) for rendering
+  const rows: (typeof sectors)[] = [];
+  for (let i = 0; i < sectors.length; i += 4) {
+    rows.push(sectors.slice(i, i + 4));
+  }
+
   return (
     <section className="py-28 bg-secondary/30 text-foreground" id="sectorsTrack">
       <div className="max-w-[1280px] mx-auto px-5 md:px-10">
@@ -77,48 +88,137 @@ export function SectorsSection() {
           Soluzioni di packaging su misura per ogni settore industriale. Scopri le nostre competenze specifiche e i vantaggi che possiamo offrirti.
         </p>
 
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-          {sectors.map((sector, index) => {
-            const isActive = activeIndex === index;
+        {/* Desktop: rows of 4 with full-width detail panel */}
+        <div className="hidden md:block space-y-4">
+          {rows.map((row, rowIndex) => (
+            <div key={rowIndex}>
+              <div className="grid grid-cols-4 gap-4">
+                {row.map((sector, colIndex) => {
+                  const globalIndex = rowIndex * 4 + colIndex;
+                  const isActive = activeIndex === globalIndex;
+                  return (
+                    <div
+                      key={sector.title}
+                      className="relative"
+                      onMouseEnter={() => setActiveIndex(globalIndex)}
+                      onMouseLeave={() => setActiveIndex(null)}
+                      onClick={() => setActiveIndex(isActive ? null : globalIndex)}
+                    >
+                      <div
+                        className={`relative flex flex-col items-center justify-center aspect-[4/3] rounded-2xl cursor-pointer overflow-hidden transition-all duration-500 border ${
+                          isActive
+                            ? 'bg-primary shadow-lg shadow-primary/20 border-primary -translate-y-1'
+                            : 'bg-background border-border/50 hover:border-primary/30'
+                        }`}
+                      >
+                        <sector.icon
+                          className={`w-10 h-10 md:w-12 md:h-12 stroke-[1] transition-colors duration-500 mb-3 ${
+                            isActive ? 'text-primary-foreground' : 'text-primary'
+                          }`}
+                        />
+                        <span className={`text-[13px] md:text-[14px] font-medium tracking-[0.06em] uppercase transition-colors duration-500 ${
+                          isActive ? 'text-primary-foreground' : 'text-foreground'
+                        }`}>
+                          {sector.title}
+                        </span>
+                        <span className={`text-[11px] font-light mt-1 transition-colors duration-500 text-center px-3 leading-snug ${
+                          isActive ? 'text-primary-foreground/70' : 'text-muted-foreground'
+                        }`}>
+                          {sector.tagline}
+                        </span>
+                      </div>
+                    </div>
+                  );
+                })}
+              </div>
+
+              {/* Full-width detail panel after this row */}
+              <AnimatePresence>
+                {activeRow4 === rowIndex && activeSector && (
+                  <motion.div
+                    key={activeIndex}
+                    initial={{ opacity: 0, height: 0 }}
+                    animate={{ opacity: 1, height: 'auto' }}
+                    exit={{ opacity: 0, height: 0 }}
+                    transition={{ duration: 0.4, ease: [0.25, 0.1, 0.25, 1] }}
+                    className="overflow-hidden"
+                    onMouseEnter={() => setActiveIndex(activeIndex)}
+                    onMouseLeave={() => setActiveIndex(null)}
+                  >
+                    <div className="mt-4 p-8 rounded-2xl bg-background border border-border/50 shadow-sm">
+                      <div className="grid grid-cols-[1fr_1fr] gap-10">
+                        <div>
+                          <h3 className="text-[18px] font-medium text-foreground mb-3 tracking-wide">
+                            {activeSector.title}
+                          </h3>
+                          <p className="text-[14px] leading-relaxed font-light text-foreground/80">
+                            {activeSector.content}
+                          </p>
+                        </div>
+                        <div>
+                          <p className="text-[11px] tracking-[0.15em] uppercase text-primary font-medium mb-4">
+                            Le nostre competenze
+                          </p>
+                          <div className="space-y-3">
+                            {activeSector.highlights.map((h) => (
+                              <div key={h} className="flex items-start gap-2.5">
+                                <ChevronRight className="w-4 h-4 text-primary mt-0.5 shrink-0" />
+                                <span className="text-[14px] font-light text-foreground/70">{h}</span>
+                              </div>
+                            ))}
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </motion.div>
+                )}
+              </AnimatePresence>
+            </div>
+          ))}
+        </div>
+
+        {/* Mobile: rows of 2 with full-width detail panel */}
+        <div className="md:hidden space-y-4">
+          {[0, 1, 2, 3].map((rowIndex) => {
+            const rowSectors = sectors.slice(rowIndex * 2, rowIndex * 2 + 2);
             return (
-              <div
-                key={sector.title}
-                className="relative"
-                onMouseEnter={() => setActiveIndex(index)}
-                onMouseLeave={() => setActiveIndex(null)}
-                onClick={() => setActiveIndex(isActive ? null : index)}
-              >
-                {/* Card */}
-                <div
-                  className={`relative flex flex-col items-center justify-center aspect-[4/3] rounded-2xl cursor-pointer overflow-hidden transition-all duration-500 border ${
-                    isActive
-                      ? 'bg-primary shadow-lg shadow-primary/20 border-primary -translate-y-1'
-                      : 'bg-background border-border/50 hover:border-primary/30'
-                  }`}
-                >
-                  <sector.icon
-                    className={`w-10 h-10 md:w-12 md:h-12 stroke-[1] transition-colors duration-500 mb-3 ${
-                      isActive ? 'text-primary-foreground' : 'text-primary'
-                    }`}
-                  />
-
-                  <span className={`text-[13px] md:text-[14px] font-medium tracking-[0.06em] uppercase transition-colors duration-500 ${
-                    isActive ? 'text-primary-foreground' : 'text-foreground'
-                  }`}>
-                    {sector.title}
-                  </span>
-
-                  <span className={`text-[11px] font-light mt-1 transition-colors duration-500 text-center px-3 leading-snug ${
-                    isActive ? 'text-primary-foreground/70' : 'text-muted-foreground'
-                  }`}>
-                    {sector.tagline}
-                  </span>
+              <div key={rowIndex}>
+                <div className="grid grid-cols-2 gap-4">
+                  {rowSectors.map((sector, colIndex) => {
+                    const globalIndex = rowIndex * 2 + colIndex;
+                    const isActive = activeIndex === globalIndex;
+                    return (
+                      <div
+                        key={sector.title}
+                        onClick={() => setActiveIndex(isActive ? null : globalIndex)}
+                      >
+                        <div
+                          className={`relative flex flex-col items-center justify-center aspect-[4/3] rounded-2xl cursor-pointer overflow-hidden transition-all duration-500 border ${
+                            isActive
+                              ? 'bg-primary shadow-lg shadow-primary/20 border-primary -translate-y-1'
+                              : 'bg-background border-border/50'
+                          }`}
+                        >
+                          <sector.icon
+                            className={`w-10 h-10 stroke-[1] transition-colors duration-500 mb-3 ${
+                              isActive ? 'text-primary-foreground' : 'text-primary'
+                            }`}
+                          />
+                          <span className={`text-[13px] font-medium tracking-[0.06em] uppercase transition-colors duration-500 ${
+                            isActive ? 'text-primary-foreground' : 'text-foreground'
+                          }`}>
+                            {sector.title}
+                          </span>
+                        </div>
+                      </div>
+                    );
+                  })}
                 </div>
 
-                {/* Expandable detail panel */}
                 <AnimatePresence>
-                  {isActive && (
+                  {activeRow2 === rowIndex && activeSector && (
                     <motion.div
+                      key={activeIndex}
                       initial={{ opacity: 0, height: 0 }}
                       animate={{ opacity: 1, height: 'auto' }}
                       exit={{ opacity: 0, height: 0 }}
@@ -126,15 +226,15 @@ export function SectorsSection() {
                       className="overflow-hidden"
                     >
                       <div className="mt-3 p-5 rounded-2xl bg-background border border-border/50 shadow-sm">
+                        <h3 className="text-[16px] font-medium text-foreground mb-2">{activeSector.title}</h3>
                         <p className="text-[13px] leading-relaxed font-light text-foreground/80 mb-4">
-                          {sector.content}
+                          {activeSector.content}
                         </p>
-
+                        <p className="text-[11px] tracking-[0.15em] uppercase text-primary font-medium mb-2">
+                          Le nostre competenze
+                        </p>
                         <div className="space-y-2">
-                          <p className="text-[11px] tracking-[0.15em] uppercase text-primary font-medium mb-2">
-                            Le nostre competenze
-                          </p>
-                          {sector.highlights.map((h) => (
+                          {activeSector.highlights.map((h) => (
                             <div key={h} className="flex items-start gap-2">
                               <ChevronRight className="w-3.5 h-3.5 text-primary mt-0.5 shrink-0" />
                               <span className="text-[13px] font-light text-foreground/70">{h}</span>
