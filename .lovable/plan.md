@@ -1,75 +1,75 @@
 
 
-# Configuratore di Imballaggio Eco-Ottimizzato
+# Miglioramenti proposti per il sito
 
-## Panoramica
-Piattaforma web professionale con doppio accesso (clienti e team interno) che permette di configurare l'imballaggio ideale per qualsiasi prodotto, con suggerimenti AI sui materiali e visualizzazione 2D dello schema di imballaggio.
-
----
-
-## 1. Portale Cliente
-
-### Pagina di Login/Registrazione
-- Accesso con email e password
-- Registrazione con dati aziendali (ragione sociale, P.IVA, settore)
-
-### Dashboard Cliente
-- Riepilogo configurazioni salvate
-- Storico ordini recenti
-- Accesso rapido al configuratore
-
-### Configuratore Imballaggio (cuore dell'app)
-- **Step 1 - Inserimento prodotto**: dimensioni (L×P×H), peso, livello di fragilità (scala 1-5), tipo di prodotto
-- **Step 2 - Suggerimento AI**: il sistema analizza i dati e propone il mix ottimale di materiali:
-  - Scatola/contenitore consigliato (tipo e dimensioni)
-  - Materiale protettivo (pluriball, schiuma, carta kraft) con quantità esatte
-  - Nastro e chiusure adeguati al peso
-  - Alternative eco-friendly quando disponibili
-- **Step 3 - Schema 2D**: visualizzazione grafica del pacco con i livelli di materiale, dimensioni quotate e legenda materiali
-- **Step 4 - Riepilogo**: lista materiali con quantità, costo stimato, impatto ambientale (CO₂ risparmiata vs soluzione standard), possibilità di salvare o richiedere preventivo
-
-### Catalogo Prodotti
-- Navigazione per categoria: materiali protettivi, nastri e chiusure, scatole e contenitori, altro
-- Schede prodotto con specifiche tecniche
+Dopo aver analizzato tutte le sezioni, ecco le aree dove interverrei per portare il sito al livello successivo:
 
 ---
 
-## 2. Pannello Interno (Team)
+## 1. Animazioni scroll-triggered su tutte le sezioni
 
-### Dashboard Gestione
-- Panoramica richieste/configurazioni dei clienti
-- Statistiche utilizzo configuratore
-- Clienti più attivi
+Attualmente le sezioni appaiono tutte insieme al caricamento. Aggiungere animazioni **fade-in + slide-up** quando ogni sezione entra nel viewport renderebbe la navigazione molto piu fluida e professionale.
 
-### Gestione Catalogo
-- CRUD prodotti con prezzi, specifiche, disponibilità
-- Regole di compatibilità tra materiali (usate dall'AI per i suggerimenti)
-
-### Gestione Clienti
-- Anagrafica clienti e storico interazioni
-- Configurazioni richieste e preventivi generati
+- Ogni titolo di sezione, griglia prodotti, card servizi e blocco settori si anima al primo scroll
+- Uso di `framer-motion` con `useInView` (gia installato)
+- Effetto leggero: opacity 0 → 1, translateY 30px → 0, staggered sui singoli elementi
 
 ---
 
-## 3. Motore AI per Suggerimenti
-- L'AI riceve dimensioni, peso e fragilità e restituisce la configurazione ottimale
-- Tiene conto delle regole di compatibilità definite dal team interno
-- Ottimizza per ridurre sprechi e costi di spedizione (volume minimo)
-- Propone alternative sostenibili quando possibili
+## 2. Sezione "Chi siamo" / Numeri aziendali
+
+Manca completamente una sezione che racconti l'azienda. Aggiungerei un blocco tra Hero e Prodotti con:
+
+- Una breve frase identitaria ("Dal 1977 al fianco dell'industria italiana")
+- 3-4 numeri chiave animati (counter): anni di attivita, clienti serviti, prodotti a catalogo, tonnellate/anno
+- Layout minimal: sfondo bianco, numeri grandi con font ultralight, contatore animato
 
 ---
 
-## 4. Stile e Design
-- Look professionale e corporate con colori neutri
-- Tipografia pulita, layout spaziosi
-- Icone chiare per le categorie di materiali
-- Badge "eco" per materiali sostenibili
+## 3. Sezione Testimonianze / Trust
+
+Per un sito B2B la social proof e fondamentale. Aggiungerei una sezione con:
+
+- 2-3 citazioni di clienti con nome, azienda e settore
+- Layout pulito a card larghe o carousel minimale
+- Posizionata dopo i Servizi e prima dei Settori
 
 ---
 
-## 5. Backend e Dati
-- Database per catalogo prodotti, configurazioni, clienti e storico
-- Autenticazione con ruoli (cliente vs operatore interno)
-- AI tramite Lovable AI per i suggerimenti sui materiali
-- Predisposizione futura per integrazione con gestionale esterno via API
+## 4. CTA finale prima del footer
+
+Aggiungere una sezione call-to-action dedicata tra Settori e Footer:
+
+- Titolo: "Pronto a ottimizzare il tuo imballaggio?"
+- Due bottoni: "Richiedi un preventivo" e "Prova il Configuratore AI"
+- Sfondo leggero con il colore primario in tonalita molto chiara
+
+---
+
+## 5. Micro-interazioni e polish
+
+- **Header**: aggiungere un indicatore della sezione attiva durante lo scroll (active dot o underline)
+- **Product cards**: animare il badge "Eco" con un leggero pulse
+- **Footer**: aggiungere icone social (LinkedIn, Instagram) e un mini form newsletter
+
+---
+
+## Priorita consigliata
+
+| # | Miglioria | Impatto |
+|---|-----------|---------|
+| 1 | Animazioni scroll-triggered | Alto - rende il sito vivo |
+| 2 | Sezione Chi siamo / Numeri | Alto - costruisce fiducia |
+| 3 | CTA finale | Medio - aumenta conversioni |
+| 4 | Testimonianze | Medio - social proof B2B |
+| 5 | Micro-interazioni | Basso - polish finale |
+
+---
+
+## Dettagli tecnici
+
+- **Animazioni**: componente wrapper `<ScrollReveal>` riutilizzabile basato su `motion.div` + `useInView`
+- **Counter animati**: hook custom `useCountUp` con `requestAnimationFrame`
+- **Nuove sezioni**: componenti in `src/components/site/` (AboutSection, TestimonialsSection, CTASection)
+- **Landing.tsx**: aggiornato l'ordine: Hero → About → Products → Sustainability → Services → Testimonials → Sectors → CTA → Footer
 
