@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { UtensilsCrossed, Wine, Candy, CakeSlice, Pill, Sparkles, Package, Cog, ChevronRight } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { ScrollReveal } from './ScrollReveal';
 
 const sectors = [
   {
@@ -64,12 +65,10 @@ const sectors = [
 export function SectorsSection() {
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
 
-  // Determine which row the active card is in (4 cols desktop, 2 cols mobile)
   const activeRow4 = activeIndex !== null ? Math.floor(activeIndex / 4) : -1;
   const activeRow2 = activeIndex !== null ? Math.floor(activeIndex / 2) : -1;
   const activeSector = activeIndex !== null ? sectors[activeIndex] : null;
 
-  // Split sectors into rows of 4 (desktop) for rendering
   const rows: (typeof sectors)[] = [];
   for (let i = 0; i < sectors.length; i += 4) {
     rows.push(sectors.slice(i, i + 4));
@@ -78,20 +77,22 @@ export function SectorsSection() {
   return (
     <section className="py-28 bg-secondary/30 text-foreground" id="sectorsTrack">
       <div className="max-w-[1280px] mx-auto px-5 md:px-10">
-        <p className="text-[11px] tracking-[0.3em] uppercase text-muted-foreground mb-3 font-light text-center">
-          Settori
-        </p>
-        <h2 className="text-[clamp(1.4rem,2.2vw,1.8rem)] font-light tracking-[0.08em] uppercase mb-4 text-center">
-          Le industrie che serviamo
-        </h2>
-        <p className="text-[15px] font-light text-muted-foreground text-center max-w-2xl mx-auto mb-16 leading-relaxed">
-          Soluzioni di packaging su misura per ogni settore industriale. Scopri le nostre competenze specifiche e i vantaggi che possiamo offrirti.
-        </p>
+        <ScrollReveal>
+          <p className="text-[11px] tracking-[0.3em] uppercase text-muted-foreground mb-3 font-light text-center">
+            Settori
+          </p>
+          <h2 className="text-[clamp(1.4rem,2.2vw,1.8rem)] font-light tracking-[0.08em] uppercase mb-4 text-center">
+            Le industrie che serviamo
+          </h2>
+          <p className="text-[15px] font-light text-muted-foreground text-center max-w-2xl mx-auto mb-16 leading-relaxed">
+            Soluzioni di packaging su misura per ogni settore industriale. Scopri le nostre competenze specifiche e i vantaggi che possiamo offrirti.
+          </p>
+        </ScrollReveal>
 
-        {/* Desktop: rows of 4 with full-width detail panel */}
+        {/* Desktop */}
         <div className="hidden md:block space-y-4">
           {rows.map((row, rowIndex) => (
-            <div key={rowIndex}>
+            <ScrollReveal key={rowIndex} delay={rowIndex * 0.1}>
               <div className="grid grid-cols-4 gap-4">
                 {row.map((sector, colIndex) => {
                   const globalIndex = rowIndex * 4 + colIndex;
@@ -132,7 +133,6 @@ export function SectorsSection() {
                 })}
               </div>
 
-              {/* Full-width detail panel after this row */}
               <AnimatePresence>
                 {activeRow4 === rowIndex && activeSector && (
                   <motion.div
@@ -173,16 +173,16 @@ export function SectorsSection() {
                   </motion.div>
                 )}
               </AnimatePresence>
-            </div>
+            </ScrollReveal>
           ))}
         </div>
 
-        {/* Mobile: rows of 2 with full-width detail panel */}
+        {/* Mobile */}
         <div className="md:hidden space-y-4">
           {[0, 1, 2, 3].map((rowIndex) => {
             const rowSectors = sectors.slice(rowIndex * 2, rowIndex * 2 + 2);
             return (
-              <div key={rowIndex}>
+              <ScrollReveal key={rowIndex} delay={rowIndex * 0.1}>
                 <div className="grid grid-cols-2 gap-4">
                   {rowSectors.map((sector, colIndex) => {
                     const globalIndex = rowIndex * 2 + colIndex;
@@ -245,7 +245,7 @@ export function SectorsSection() {
                     </motion.div>
                   )}
                 </AnimatePresence>
-              </div>
+              </ScrollReveal>
             );
           })}
         </div>
