@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Heart, Plus, ShoppingCart } from 'lucide-react';
+import { ScrollReveal } from './ScrollReveal';
 
 const categories = [
   { id: 'nastri-adesivi', label: 'Nastri adesivi' },
@@ -64,7 +65,7 @@ function ProductCard({ product, delay }: { product: Product; delay: number }) {
 
   return (
     <motion.article
-      className="group relative bg-white rounded-2xl hover:shadow-[0_8px_30px_rgba(0,0,0,0.06)] transition-all duration-500 overflow-hidden flex flex-col h-[400px]"
+      className="group relative bg-background rounded-2xl hover:shadow-[0_8px_30px_rgba(0,0,0,0.06)] transition-all duration-500 overflow-hidden flex flex-col h-[400px]"
       initial={{ opacity: 0, y: 12 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ delay: delay * 0.04, duration: 0.5 }}
@@ -72,7 +73,7 @@ function ProductCard({ product, delay }: { product: Product; delay: number }) {
       {/* Image */}
       <div className="relative w-full h-52 overflow-hidden bg-secondary/50 p-6 flex items-center justify-center">
         {product.eco && (
-          <span className="absolute top-3 left-3 bg-accent/10 text-accent text-[10px] font-medium px-2.5 py-1 rounded-full z-20 uppercase tracking-[0.12em]">
+          <span className="absolute top-3 left-3 bg-accent/10 text-accent text-[10px] font-medium px-2.5 py-1 rounded-full z-20 uppercase tracking-[0.12em] animate-[pulse_3s_ease-in-out_infinite]">
             Eco
           </span>
         )}
@@ -84,13 +85,13 @@ function ProductCard({ product, delay }: { product: Product; delay: number }) {
         <div className="w-16 h-16 bg-secondary rounded-2xl flex items-center justify-center text-muted-foreground text-[10px] font-light tracking-wider">
           {product.code}
         </div>
-        <button className="absolute top-3 right-3 w-7 h-7 bg-white/80 backdrop-blur rounded-full flex items-center justify-center text-muted-foreground hover:text-primary transition-colors z-20 opacity-0 group-hover:opacity-100 duration-300">
+        <button className="absolute top-3 right-3 w-7 h-7 bg-background/80 backdrop-blur rounded-full flex items-center justify-center text-muted-foreground hover:text-primary transition-colors z-20 opacity-0 group-hover:opacity-100 duration-300">
           <Heart className="w-3.5 h-3.5" />
         </button>
       </div>
 
       {/* Info */}
-      <div className="p-5 flex-1 flex flex-col relative bg-white z-20">
+      <div className="p-5 flex-1 flex flex-col relative bg-background z-20">
         <div className="mb-1">
           <p className="text-[10px] font-normal text-muted-foreground uppercase tracking-[0.15em] mb-1.5">{product.code}</p>
           <h3 className="text-[15px] font-medium text-foreground leading-snug mb-2 group-hover:text-primary transition-colors duration-300">
@@ -111,7 +112,7 @@ function ProductCard({ product, delay }: { product: Product; delay: number }) {
         </div>
 
         {/* Variant Panel */}
-        <div className="absolute inset-x-0 bottom-0 bg-white p-5 transform translate-y-full group-hover:translate-y-0 h-[200px] flex flex-col justify-between transition-transform duration-400">
+        <div className="absolute inset-x-0 bottom-0 bg-background p-5 transform translate-y-full group-hover:translate-y-0 h-[200px] flex flex-col justify-between transition-transform duration-400">
           <div className="space-y-3">
             {product.colors && product.colors.length > 0 && (
               <div>
@@ -136,7 +137,7 @@ function ProductCard({ product, delay }: { product: Product; delay: number }) {
                   <button
                     key={s}
                     onClick={() => setSelectedSize(i)}
-                    className={`px-2.5 py-1 text-[11px] rounded-full transition-colors ${selectedSize === i ? 'bg-foreground text-white' : 'bg-secondary/60 text-foreground hover:bg-secondary'}`}
+                    className={`px-2.5 py-1 text-[11px] rounded-full transition-colors ${selectedSize === i ? 'bg-foreground text-background' : 'bg-secondary/60 text-foreground hover:bg-secondary'}`}
                   >
                     {s}
                   </button>
@@ -146,7 +147,7 @@ function ProductCard({ product, delay }: { product: Product; delay: number }) {
           </div>
           <div className="pt-3 flex items-center justify-between">
             <span className="text-lg font-normal text-foreground">{product.price}</span>
-            <button className="bg-foreground text-white text-[11px] font-normal px-4 py-2 rounded-full hover:bg-primary transition-colors flex items-center gap-2 tracking-wide">
+            <button className="bg-foreground text-background text-[11px] font-normal px-4 py-2 rounded-full hover:bg-primary transition-colors flex items-center gap-2 tracking-wide">
               Aggiungi
               <ShoppingCart className="w-3.5 h-3.5" />
             </button>
@@ -161,32 +162,36 @@ export function ProductsSection() {
   const [active, setActive] = useState('nastri-adesivi');
 
   return (
-    <section className="bg-white text-foreground py-28" id="productCategories">
-      <div className="text-center px-10 mb-10">
-        <p className="text-[11px] tracking-[0.3em] uppercase text-muted-foreground mb-3 font-light">Catalogo</p>
-        <h2 className="text-[clamp(1.4rem,2.2vw,1.8rem)] font-light tracking-[0.08em] uppercase">
-          Le nostre soluzioni
-        </h2>
-      </div>
+    <section className="bg-background text-foreground py-28" id="productCategories">
+      <ScrollReveal>
+        <div className="text-center px-10 mb-10">
+          <p className="text-[11px] tracking-[0.3em] uppercase text-muted-foreground mb-3 font-light">Catalogo</p>
+          <h2 className="text-[clamp(1.4rem,2.2vw,1.8rem)] font-light tracking-[0.08em] uppercase">
+            Le nostre soluzioni
+          </h2>
+        </div>
+      </ScrollReveal>
 
       {/* Category Tabs */}
-      <div className="overflow-x-auto px-10 mb-12" style={{ scrollbarWidth: 'none' }}>
-        <div className="flex gap-2 min-w-max pb-1 justify-center">
-          {categories.map(cat => (
-            <button
-              key={cat.id}
-              onClick={() => setActive(cat.id)}
-              className={`px-5 py-2 rounded-full text-[11px] tracking-[0.15em] uppercase whitespace-nowrap transition-all duration-300 ${
-                active === cat.id
-                  ? 'bg-foreground text-white'
-                  : 'text-muted-foreground hover:text-foreground'
-              }`}
-            >
-              {cat.label}
-            </button>
-          ))}
+      <ScrollReveal delay={0.1}>
+        <div className="overflow-x-auto px-10 mb-12" style={{ scrollbarWidth: 'none' }}>
+          <div className="flex gap-2 min-w-max pb-1 justify-center">
+            {categories.map(cat => (
+              <button
+                key={cat.id}
+                onClick={() => setActive(cat.id)}
+                className={`px-5 py-2 rounded-full text-[11px] tracking-[0.15em] uppercase whitespace-nowrap transition-all duration-300 ${
+                  active === cat.id
+                    ? 'bg-foreground text-background'
+                    : 'text-muted-foreground hover:text-foreground'
+                }`}
+              >
+                {cat.label}
+              </button>
+            ))}
+          </div>
         </div>
-      </div>
+      </ScrollReveal>
 
       {/* Product Grid */}
       <div className="max-w-[1400px] mx-auto px-10">
