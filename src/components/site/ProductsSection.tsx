@@ -8,6 +8,26 @@ import imgProtezione from '@/assets/cat-protezione.jpg';
 import imgFilm from '@/assets/cat-film.jpg';
 import imgSacchetti from '@/assets/cat-sacchetti.jpg';
 import imgSostenibilita from '@/assets/cat-sostenibilita.jpg';
+import imgP1 from '@/assets/p-p1.jpg';
+import imgP2 from '@/assets/p-p2.jpg';
+import imgP3 from '@/assets/p-p3.jpg';
+import imgP4 from '@/assets/p-p4.jpg';
+import imgP5 from '@/assets/p-p5.jpg';
+import imgP6 from '@/assets/p-p6.jpg';
+import imgP7 from '@/assets/p-p7.jpg';
+import imgP8 from '@/assets/p-p8.jpg';
+import imgS1 from '@/assets/p-s1.jpg';
+import imgS2 from '@/assets/p-s2.jpg';
+import imgS3 from '@/assets/p-s3.jpg';
+import imgPr1 from '@/assets/p-pr1.jpg';
+import imgPr2 from '@/assets/p-pr2.jpg';
+import imgPr3 from '@/assets/p-pr3.jpg';
+import imgF1 from '@/assets/p-f1.jpg';
+import imgF2 from '@/assets/p-f2.jpg';
+import imgSb1 from '@/assets/p-sb1.jpg';
+import imgSb2 from '@/assets/p-sb2.jpg';
+import imgE1 from '@/assets/p-e1.jpg';
+import imgE2 from '@/assets/p-e2.jpg';
 
 const categoryImages: Record<string, string> = {
   'nastri-adesivi': imgNastri,
@@ -16,6 +36,15 @@ const categoryImages: Record<string, string> = {
   'film-regge': imgFilm,
   'sacchetti-buste': imgSacchetti,
   'sostenibilita': imgSostenibilita,
+};
+
+const productImages: Record<string, string> = {
+  p1: imgP1, p2: imgP2, p3: imgP3, p4: imgP4, p5: imgP5, p6: imgP6, p7: imgP7, p8: imgP8,
+  s1: imgS1, s2: imgS2, s3: imgS3,
+  pr1: imgPr1, pr2: imgPr2, pr3: imgPr3,
+  f1: imgF1, f2: imgF2,
+  sb1: imgSb1, sb2: imgSb2,
+  e1: imgE1, e2: imgE2,
 };
 
 const categories = [
