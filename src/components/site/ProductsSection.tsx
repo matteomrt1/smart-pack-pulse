@@ -106,7 +106,7 @@ const products: Record<string, Product[]> = {
 function ProductCard({ product, delay, categoryId }: { product: Product; delay: number; categoryId: string }) {
   const [selectedSize, setSelectedSize] = useState(0);
   const [selectedColor, setSelectedColor] = useState(0);
-  const image = categoryImages[categoryId];
+  const image = productImages[product.id] || categoryImages[categoryId];
 
   return (
     <motion.article
