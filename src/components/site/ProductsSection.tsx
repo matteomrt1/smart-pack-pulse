@@ -101,11 +101,8 @@ function ProductCard({ product, delay }: { product: Product; delay: number }) {
         <p className="text-[13px] text-muted-foreground leading-relaxed line-clamp-2 mb-4 transition-opacity duration-300 group-hover:opacity-0 font-light">
           {product.desc}
         </p>
-        <div className="mt-auto flex items-end justify-between transition-opacity duration-300 group-hover:opacity-0">
-          <div>
-            <span className="text-[10px] text-muted-foreground font-light">da</span>
-            <div className="text-lg font-normal text-foreground">{product.price}</div>
-          </div>
+        <div className="mt-auto flex items-end justify-end transition-opacity duration-300 group-hover:opacity-0">
+          {/* Prezzo nascosto su richiesta - {product.price} */}
           <button className="w-9 h-9 rounded-full bg-secondary/60 flex items-center justify-center text-muted-foreground hover:text-primary transition-colors">
             <Plus className="w-4 h-4" />
           </button>
@@ -145,12 +142,14 @@ function ProductCard({ product, delay }: { product: Product; delay: number }) {
               </div>
             </div>
           </div>
-          <div className="pt-3 flex items-center justify-between">
-            <span className="text-lg font-normal text-foreground">{product.price}</span>
-            <button className="bg-foreground text-background text-[11px] font-normal px-4 py-2 rounded-full hover:bg-primary transition-colors flex items-center gap-2 tracking-wide">
-              Aggiungi
-              <ShoppingCart className="w-3.5 h-3.5" />
-            </button>
+          <div className="pt-3 flex items-center justify-end">
+            {/* Prezzo nascosto su richiesta - {product.price} */}
+            <a
+              href="#contact"
+              className="bg-foreground text-background text-[11px] font-normal px-4 py-2 rounded-full hover:bg-primary transition-colors tracking-wide"
+            >
+              Contattaci per un'offerta dedicata
+            </a>
           </div>
         </div>
       </div>
