@@ -1,7 +1,22 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Heart, Plus, ShoppingCart } from 'lucide-react';
+import { Heart, Plus } from 'lucide-react';
 import { ScrollReveal } from './ScrollReveal';
+import imgNastri from '@/assets/cat-nastri.jpg';
+import imgScatole from '@/assets/cat-scatole.jpg';
+import imgProtezione from '@/assets/cat-protezione.jpg';
+import imgFilm from '@/assets/cat-film.jpg';
+import imgSacchetti from '@/assets/cat-sacchetti.jpg';
+import imgSostenibilita from '@/assets/cat-sostenibilita.jpg';
+
+const categoryImages: Record<string, string> = {
+  'nastri-adesivi': imgNastri,
+  'scatole-cartone': imgScatole,
+  'protezione-riempimento': imgProtezione,
+  'film-regge': imgFilm,
+  'sacchetti-buste': imgSacchetti,
+  'sostenibilita': imgSostenibilita,
+};
 
 const categories = [
   { id: 'nastri-adesivi', label: 'Nastri adesivi' },
@@ -59,9 +74,10 @@ const products: Record<string, Product[]> = {
   ],
 };
 
-function ProductCard({ product, delay }: { product: Product; delay: number }) {
+function ProductCard({ product, delay, categoryId }: { product: Product; delay: number; categoryId: string }) {
   const [selectedSize, setSelectedSize] = useState(0);
   const [selectedColor, setSelectedColor] = useState(0);
+  const image = categoryImages[categoryId];
 
   return (
     <motion.article
@@ -71,7 +87,7 @@ function ProductCard({ product, delay }: { product: Product; delay: number }) {
       transition={{ delay: delay * 0.04, duration: 0.5 }}
     >
       {/* Image */}
-      <div className="relative w-full h-52 overflow-hidden bg-secondary/50 p-6 flex items-center justify-center">
+      <div className="relative w-full h-52 overflow-hidden bg-secondary/30">
         {product.eco && (
           <span className="absolute top-3 left-3 bg-accent/10 text-accent text-[10px] font-medium px-2.5 py-1 rounded-full z-20 uppercase tracking-[0.12em] animate-[pulse_3s_ease-in-out_infinite]">
             Eco
@@ -82,9 +98,16 @@ function ProductCard({ product, delay }: { product: Product; delay: number }) {
             {product.badge}
           </span>
         )}
-        <div className="w-16 h-16 bg-secondary rounded-2xl flex items-center justify-center text-muted-foreground text-[10px] font-light tracking-wider">
-          {product.code}
-        </div>
+        {image && (
+          <img
+            src={image}
+            alt={product.name}
+            loading="lazy"
+            width={768}
+            height={768}
+            className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+          />
+        )}
         <button className="absolute top-3 right-3 w-7 h-7 bg-background/80 backdrop-blur rounded-full flex items-center justify-center text-muted-foreground hover:text-primary transition-colors z-20 opacity-0 group-hover:opacity-100 duration-300">
           <Heart className="w-3.5 h-3.5" />
         </button>
@@ -204,7 +227,7 @@ export function ProductsSection() {
             transition={{ duration: 0.3 }}
           >
             {(products[active] || []).map((product, i) => (
-              <ProductCard key={product.id} product={product} delay={i} />
+              <ProductCard key={product.id} product={product} delay={i} categoryId={active} />
             ))}
           </motion.div>
         </AnimatePresence>
