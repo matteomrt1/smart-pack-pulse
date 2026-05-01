@@ -1,6 +1,6 @@
 import { useState, useEffect, useCallback } from 'react';
 import { Link } from 'react-router-dom';
-import { Search } from 'lucide-react';
+import { Search, Lightbulb } from 'lucide-react';
 import { ContactPanel } from './ContactPanel';
 import { MegaMenu } from './MegaMenu';
 import { SearchOverlay } from './SearchOverlay';
