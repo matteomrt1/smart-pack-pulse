@@ -1,4 +1,6 @@
 import { motion } from 'framer-motion';
+import { Link } from 'react-router-dom';
+import { Sparkles } from 'lucide-react';
 import heroVideo from '@/assets/hero-video.mp4';
 import heroPoster from '@/assets/hero-poster.jpg';
 
