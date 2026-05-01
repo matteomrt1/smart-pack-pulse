@@ -1,9 +1,48 @@
 import { Link } from 'react-router-dom';
+import { Sparkles, Gauge, Calculator, FlaskConical, ScanLine } from 'lucide-react';
 import { ScrollReveal } from './ScrollReveal';
 import serviceAssistenza from '@/assets/service-assistenza.jpg';
 import serviceCustom from '@/assets/service-custom.jpg';
 import serviceValore from '@/assets/service-valore.jpg';
 import serviceQualita from '@/assets/service-qualita.jpg';
+
+const b2bTools = [
+  {
+    title: 'Smart Tape Advisor',
+    desc: 'Wizard in 4 step: rispondi a 4 domande e ottieni il nastro tecnicamente corretto per il tuo caso.',
+    icon: Sparkles,
+    route: '/tools/smart-tape-advisor',
+    available: true,
+  },
+  {
+    title: 'Configuratore di Performance',
+    desc: 'Algoritmo che incrocia peso, cartone, ambiente e applicazione per generare un Report di Affidabilità.',
+    icon: Gauge,
+    route: '/tools/performance-configurator',
+    available: false,
+  },
+  {
+    title: 'Calcolatore TCO',
+    desc: 'Total Cost of Ownership: dimostriamo con i numeri quanto risparmi passando a un nastro premium.',
+    icon: Calculator,
+    route: '/tools/tco-calculator',
+    available: false,
+  },
+  {
+    title: 'Test di Stress',
+    desc: 'Video comparativi: tenuta al peso, comportamento a -20°C, rumore allo srotolamento.',
+    icon: FlaskConical,
+    route: '/tools/stress-test',
+    available: false,
+  },
+  {
+    title: 'Analisi Cartone via Foto',
+    desc: 'Carica una macro del tuo cartone: l\'AI suggerisce il tipo di adesivo ideale per quella superficie.',
+    icon: ScanLine,
+    route: '/tools/carton-analysis',
+    available: false,
+  },
+];
 
 const services = [
   {
