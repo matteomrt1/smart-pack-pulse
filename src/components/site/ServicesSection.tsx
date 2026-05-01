@@ -1,9 +1,48 @@
 import { Link } from 'react-router-dom';
+import { Sparkles, Gauge, Calculator, FlaskConical, ScanLine } from 'lucide-react';
 import { ScrollReveal } from './ScrollReveal';
 import serviceAssistenza from '@/assets/service-assistenza.jpg';
 import serviceCustom from '@/assets/service-custom.jpg';
 import serviceValore from '@/assets/service-valore.jpg';
 import serviceQualita from '@/assets/service-qualita.jpg';
+
+const b2bTools = [
+  {
+    title: 'Smart Tape Advisor',
+    desc: 'Wizard in 4 step: rispondi a 4 domande e ottieni il nastro tecnicamente corretto per il tuo caso.',
+    icon: Sparkles,
+    route: '/tools/smart-tape-advisor',
+    available: true,
+  },
+  {
+    title: 'Configuratore di Performance',
+    desc: 'Algoritmo che incrocia peso, cartone, ambiente e applicazione per generare un Report di Affidabilità.',
+    icon: Gauge,
+    route: '/tools/performance-configurator',
+    available: false,
+  },
+  {
+    title: 'Calcolatore TCO',
+    desc: 'Total Cost of Ownership: dimostriamo con i numeri quanto risparmi passando a un nastro premium.',
+    icon: Calculator,
+    route: '/tools/tco-calculator',
+    available: false,
+  },
+  {
+    title: 'Test di Stress',
+    desc: 'Video comparativi: tenuta al peso, comportamento a -20°C, rumore allo srotolamento.',
+    icon: FlaskConical,
+    route: '/tools/stress-test',
+    available: false,
+  },
+  {
+    title: 'Analisi Cartone via Foto',
+    desc: 'Carica una macro del tuo cartone: l\'AI suggerisce il tipo di adesivo ideale per quella superficie.',
+    icon: ScanLine,
+    route: '/tools/carton-analysis',
+    available: false,
+  },
+];
 
 const services = [
   {
@@ -67,23 +106,68 @@ export function ServicesSection() {
           </div>
         </ScrollReveal>
 
-        {/* Configuratore CTA */}
+        {/* Servizi esclusivi B2B */}
         <ScrollReveal delay={0.2}>
-          <div className="mt-24 text-center">
-            <p className="text-[11px] tracking-[0.3em] uppercase text-muted-foreground mb-3 font-light">Servizio esclusivo</p>
-            <h3 className="text-[clamp(1.2rem,1.8vw,1.5rem)] font-light tracking-[0.06em] mb-3">Configuratore Imballaggio AI</h3>
-            <p className="text-muted-foreground max-w-lg mx-auto mb-8 text-[14px] font-light leading-relaxed">
-              Inserisci dimensioni, peso e fragilità del tuo prodotto: il nostro motore AI ti suggerisce
-              la combinazione ottimale di materiali.
+          <div className="mt-28 text-center mb-12">
+            <p className="text-[11px] tracking-[0.3em] uppercase text-muted-foreground mb-3 font-light">Servizi esclusivi</p>
+            <h3 className="text-[clamp(1.4rem,2.2vw,1.8rem)] font-light tracking-[0.08em] uppercase mb-4">
+              Strumenti tecnici per professionisti
+            </h3>
+            <p className="text-muted-foreground max-w-xl mx-auto text-[14px] font-light leading-relaxed">
+              Non vendiamo nastri: vendiamo affidabilità. Strumenti pensati per chi imballa migliaia di pacchi al mese
+              e vuole decidere con i dati, non con il prezzo al rotolo.
             </p>
+          </div>
+        </ScrollReveal>
+
+        <ScrollReveal delay={0.3}>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 max-w-6xl mx-auto">
+            {b2bTools.map((tool) => {
+              const Icon = tool.icon;
+              return (
+                <Link
+                  key={tool.route}
+                  to={tool.route}
+                  className="group relative bg-white border border-border/40 rounded-3xl p-7 text-left transition-all duration-300 hover:border-primary/40 hover:-translate-y-1 hover:shadow-[0_20px_40px_-20px_hsl(var(--primary)/0.25)]"
+                >
+                  <div className="flex items-start justify-between mb-6">
+                    <div className="w-12 h-12 rounded-2xl bg-primary/5 flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-primary-foreground transition-colors">
+                      <Icon className="w-5 h-5" strokeWidth={1.5} />
+                    </div>
+                    <span className={`text-[10px] tracking-[0.18em] uppercase font-light px-2.5 py-1 rounded-full ${
+                      tool.available
+                        ? 'bg-primary/10 text-primary'
+                        : 'bg-muted text-muted-foreground'
+                    }`}>
+                      {tool.available ? 'Disponibile' : 'In arrivo'}
+                    </span>
+                  </div>
+                  <h4 className="text-[15px] font-normal tracking-[0.02em] mb-2 group-hover:text-primary transition-colors">
+                    {tool.title}
+                  </h4>
+                  <p className="text-[13px] text-muted-foreground font-light leading-relaxed">
+                    {tool.desc}
+                  </p>
+                  <div className="mt-6 flex items-center gap-1.5 text-[11px] tracking-[0.18em] uppercase font-light text-foreground/60 group-hover:text-primary transition-colors">
+                    {tool.available ? 'Provalo ora' : 'Scopri di più'}
+                    <svg className="w-3 h-3 transition-transform group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                    </svg>
+                  </div>
+                </Link>
+              );
+            })}
+          </div>
+        </ScrollReveal>
+
+        <ScrollReveal delay={0.4}>
+          <div className="mt-12 text-center">
             <Link
               to="/configurator"
-              className="inline-flex items-center gap-2.5 bg-foreground text-background px-7 py-3 rounded-full hover:bg-primary transition-colors text-[11px] font-normal tracking-[0.18em] uppercase"
+              className="inline-flex items-center gap-2 text-[12px] tracking-[0.12em] uppercase font-light text-muted-foreground hover:text-primary transition-colors"
             >
-              Prova il Configuratore
-              <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
-                <path strokeLinecap="round" strokeLinejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" />
-              </svg>
+              Cerchi il configuratore di imballaggio completo?
+              <span aria-hidden>→</span>
             </Link>
           </div>
         </ScrollReveal>

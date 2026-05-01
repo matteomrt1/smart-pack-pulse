@@ -13,6 +13,8 @@ import Configurator from '@/pages/client/Configurator';
 import AdminDashboard from '@/pages/admin/AdminDashboard';
 import AdminCatalog from '@/pages/admin/AdminCatalog';
 import AdminClients from '@/pages/admin/AdminClients';
+import SmartTapeAdvisor from '@/pages/tools/SmartTapeAdvisor';
+import ToolComingSoon from '@/pages/tools/ToolComingSoon';
 import NotFound from './pages/NotFound';
 
 const queryClient = new QueryClient();
@@ -29,6 +31,13 @@ const App = () => {
         <Router>
           <Routes>
             <Route path="/" element={<Landing />} />
+
+            {/* Tools */}
+            <Route path="/tools/smart-tape-advisor" element={<SmartTapeAdvisor />} />
+            <Route path="/tools/performance-configurator" element={<ToolComingSoon variant="performance" />} />
+            <Route path="/tools/tco-calculator" element={<ToolComingSoon variant="tco" />} />
+            <Route path="/tools/stress-test" element={<ToolComingSoon variant="stress" />} />
+            <Route path="/tools/carton-analysis" element={<ToolComingSoon variant="carton" />} />
 
             {/* Client portal */}
             <Route element={<AppLayout role={role} onRoleToggle={toggleRole} />}>
