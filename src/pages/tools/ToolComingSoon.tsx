@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { Gauge, Calculator, FlaskConical, ScanLine, Clock, ArrowRight } from 'lucide-react';
+import { Gauge, Calculator, FlaskConical, ScanLine, Clock, ArrowRight, type LucideIcon } from 'lucide-react';
 import { SiteHeader } from '@/components/site/SiteHeader';
 import { SiteFooter } from '@/components/site/SiteFooter';
 
@@ -9,7 +9,7 @@ const CONFIG: Record<Variant, {
   title: string;
   eyebrow: string;
   intro: string;
-  icon: React.ComponentType<{ className?: string; strokeWidth?: number }>;
+  icon: LucideIcon;
   features: string[];
 }> = {
   performance: {

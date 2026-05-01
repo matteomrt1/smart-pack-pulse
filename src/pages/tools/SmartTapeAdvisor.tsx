@@ -7,6 +7,7 @@ import {
   Warehouse, Snowflake, Droplets,
   Volume2, ShieldCheck, Wallet,
   ArrowLeft, RotateCcw, Check,
+  type LucideIcon,
 } from 'lucide-react';
 import { Progress } from '@/components/ui/progress';
 import { SiteHeader } from '@/components/site/SiteHeader';
@@ -24,7 +25,7 @@ type StepConfig = {
   key: keyof Answers;
   question: string;
   hint: string;
-  options: { value: string; label: string; desc: string; icon: React.ComponentType<{ className?: string; strokeWidth?: number }> }[];
+  options: { value: string; label: string; desc: string; icon: LucideIcon }[];
 };
 
 const STEPS: StepConfig[] = [
