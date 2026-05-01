@@ -1,6 +1,7 @@
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Heart, Plus } from 'lucide-react';
+import { Heart, Plus, Sparkles, ArrowRight } from 'lucide-react';
 import { ScrollReveal } from './ScrollReveal';
 import imgNastri from '@/assets/cat-nastri.jpg';
 import imgScatole from '@/assets/cat-scatole.jpg';
@@ -220,6 +221,30 @@ export function ProductsSection() {
           <h2 className="text-[clamp(1.4rem,2.2vw,1.8rem)] font-light tracking-[0.08em] uppercase">
             Le nostre soluzioni
           </h2>
+        </div>
+      </ScrollReveal>
+
+      {/* Advisor banner */}
+      <ScrollReveal delay={0.05}>
+        <div className="max-w-3xl mx-auto px-6 mb-10">
+          <Link
+            to="/tools/smart-tape-advisor"
+            className="group flex items-center justify-between gap-4 bg-foreground/[0.03] hover:bg-foreground/[0.06] border border-foreground/10 hover:border-primary/40 rounded-2xl px-6 py-4 transition-all"
+          >
+            <div className="flex items-center gap-4 min-w-0">
+              <div className="w-10 h-10 rounded-xl bg-primary/10 text-primary flex items-center justify-center shrink-0 group-hover:bg-primary group-hover:text-primary-foreground transition-colors">
+                <Sparkles className="w-4 h-4" strokeWidth={1.5} />
+              </div>
+              <div className="min-w-0">
+                <p className="text-[13px] font-normal truncate">Non sai quale nastro scegliere?</p>
+                <p className="text-[12px] text-muted-foreground font-light truncate">Fatti guidare dal nostro Advisor in 4 step.</p>
+              </div>
+            </div>
+            <span className="hidden sm:inline-flex items-center gap-1.5 text-[11px] tracking-[0.18em] uppercase font-light text-primary shrink-0">
+              Inizia
+              <ArrowRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-1" strokeWidth={1.5} />
+            </span>
+          </Link>
         </div>
       </ScrollReveal>
 
