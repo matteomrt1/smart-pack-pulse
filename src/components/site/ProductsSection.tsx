@@ -1,6 +1,7 @@
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Heart, Plus } from 'lucide-react';
+import { Heart, Plus, Sparkles, ArrowRight } from 'lucide-react';
 import { ScrollReveal } from './ScrollReveal';
 import imgNastri from '@/assets/cat-nastri.jpg';
 import imgScatole from '@/assets/cat-scatole.jpg';
