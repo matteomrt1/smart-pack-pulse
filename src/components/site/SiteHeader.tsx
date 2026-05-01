@@ -68,6 +68,13 @@ export function SiteHeader() {
         </div>
 
         <div className="flex items-center gap-3 justify-self-end">
+          <Link
+            to="/tools/smart-tape-advisor"
+            className="hidden sm:inline-flex items-center gap-1.5 text-[0.65rem] md:text-[0.72rem] tracking-[0.2em] uppercase whitespace-nowrap font-light px-3.5 py-1.5 rounded-full border border-current/40 hover:bg-current/10 transition-colors"
+          >
+            <Lightbulb className="w-3 h-3" strokeWidth={1.5} />
+            Tape Advisor
+          </Link>
           <button
             onClick={() => setContactOpen(true)}
             className="text-[0.65rem] md:text-[0.72rem] tracking-[0.2em] uppercase whitespace-nowrap cursor-pointer font-light hover:opacity-60 transition-opacity"
