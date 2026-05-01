@@ -40,6 +40,21 @@ export function HeroSection() {
         </motion.h1>
 
         <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.7, duration: 1 }}
+          className="mb-10"
+        >
+          <Link
+            to="/tools/smart-tape-advisor"
+            className="group inline-flex items-center gap-3 bg-white text-foreground px-8 py-4 rounded-full text-[12px] tracking-[0.22em] uppercase font-light hover:bg-white/90 transition-all duration-300 shadow-[0_10px_40px_-10px_rgba(0,0,0,0.4)] hover:shadow-[0_15px_50px_-10px_rgba(0,0,0,0.5)] hover:-translate-y-0.5"
+          >
+            <Sparkles className="w-4 h-4" strokeWidth={1.5} />
+            Trova il nastro perfetto
+          </Link>
+        </motion.div>
+
+        <motion.div
           className="flex flex-wrap gap-8 justify-center"
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
