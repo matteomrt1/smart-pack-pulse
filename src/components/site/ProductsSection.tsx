@@ -140,7 +140,7 @@ function ProductCard({ product, delay, categoryId, onOpen }: { product: Product;
             className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
           />
         )}
-        <button className="absolute top-3 right-3 w-7 h-7 bg-background/80 backdrop-blur rounded-full flex items-center justify-center text-muted-foreground hover:text-primary transition-colors z-20 opacity-0 group-hover:opacity-100 duration-300">
+        <button onClick={(e) => e.stopPropagation()} className="absolute top-3 right-3 w-7 h-7 bg-background/80 backdrop-blur rounded-full flex items-center justify-center text-muted-foreground hover:text-primary transition-colors z-20 opacity-0 group-hover:opacity-100 duration-300">
           <Heart className="w-3.5 h-3.5" />
         </button>
       </div>
