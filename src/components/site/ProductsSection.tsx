@@ -105,7 +105,7 @@ const products: Record<string, Product[]> = {
   ],
 };
 
-function ProductCard({ product, delay, categoryId }: { product: Product; delay: number; categoryId: string }) {
+function ProductCard({ product, delay, categoryId, onOpen }: { product: Product; delay: number; categoryId: string; onOpen: (p: Product, image: string) => void }) {
   const [selectedSize, setSelectedSize] = useState(0);
   const [selectedColor, setSelectedColor] = useState(0);
   const image = productImages[product.id] || categoryImages[categoryId];
