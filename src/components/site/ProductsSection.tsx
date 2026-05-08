@@ -163,7 +163,7 @@ function ProductCard({ product, delay, categoryId, onOpen }: { product: Product;
         </div>
 
         {/* Variant Panel */}
-        <div className="absolute inset-x-0 bottom-0 bg-background p-5 transform translate-y-full group-hover:translate-y-0 h-[200px] flex flex-col justify-between transition-transform duration-400">
+        <div onClick={(e) => e.stopPropagation()} className="absolute inset-x-0 bottom-0 bg-background p-5 transform translate-y-full group-hover:translate-y-0 h-[200px] flex flex-col justify-between transition-transform duration-400">
           <div className="space-y-3">
             {product.colors && product.colors.length > 0 && (
               <div>
@@ -196,8 +196,13 @@ function ProductCard({ product, delay, categoryId, onOpen }: { product: Product;
               </div>
             </div>
           </div>
-          <div className="pt-3 flex items-center justify-end">
-            {/* Prezzo nascosto su richiesta - {product.price} */}
+          <div className="pt-3 flex items-center justify-between gap-2">
+            <button
+              onClick={() => onOpen(product, image)}
+              className="text-[11px] font-light tracking-wide text-foreground hover:text-primary transition-colors underline-offset-4 hover:underline"
+            >
+              Dettagli
+            </button>
             <a
               href="#contact"
               className="bg-foreground text-background text-[11px] font-normal px-4 py-2 rounded-full hover:bg-primary transition-colors tracking-wide"
