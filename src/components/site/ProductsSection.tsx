@@ -157,8 +157,7 @@ function ProductCard({ product, delay, categoryId, onOpen }: { product: Product;
           {product.desc}
         </p>
         <div className="mt-auto flex items-end justify-end transition-opacity duration-300 group-hover:opacity-0">
-          {/* Prezzo nascosto su richiesta - {product.price} */}
-          <button className="w-9 h-9 rounded-full bg-secondary/60 flex items-center justify-center text-muted-foreground hover:text-primary transition-colors">
+          <button onClick={(e) => e.stopPropagation()} className="w-9 h-9 rounded-full bg-secondary/60 flex items-center justify-center text-muted-foreground hover:text-primary transition-colors">
             <Plus className="w-4 h-4" />
           </button>
         </div>
