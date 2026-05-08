@@ -288,11 +288,24 @@ export function ProductsSection() {
             transition={{ duration: 0.3 }}
           >
             {(products[active] || []).map((product, i) => (
-              <ProductCard key={product.id} product={product} delay={i} categoryId={active} />
+              <ProductCard
+                key={product.id}
+                product={product}
+                delay={i}
+                categoryId={active}
+                onOpen={(p, img) => setOpenProduct({ product: p, image: img })}
+              />
             ))}
           </motion.div>
         </AnimatePresence>
       </div>
+
+      <ProductDetailDialog
+        open={!!openProduct}
+        onOpenChange={(o) => !o && setOpenProduct(null)}
+        product={openProduct?.product ?? null}
+        image={openProduct?.image ?? ''}
+      />
     </section>
   );
 }
