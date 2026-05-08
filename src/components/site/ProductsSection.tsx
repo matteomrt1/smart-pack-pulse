@@ -218,6 +218,7 @@ function ProductCard({ product, delay, categoryId, onOpen }: { product: Product;
 
 export function ProductsSection() {
   const [active, setActive] = useState('nastri-adesivi');
+  const [openProduct, setOpenProduct] = useState<{ product: Product; image: string } | null>(null);
 
   return (
     <section className="bg-background text-foreground py-28" id="productCategories">
