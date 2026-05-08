@@ -112,7 +112,8 @@ function ProductCard({ product, delay, categoryId, onOpen }: { product: Product;
 
   return (
     <motion.article
-      className="group relative bg-background rounded-2xl hover:shadow-[0_8px_30px_rgba(0,0,0,0.06)] transition-all duration-500 overflow-hidden flex flex-col h-[400px]"
+      onClick={() => onOpen(product, image)}
+      className="group relative bg-background rounded-2xl hover:shadow-[0_8px_30px_rgba(0,0,0,0.06)] transition-all duration-500 overflow-hidden flex flex-col h-[400px] cursor-pointer"
       initial={{ opacity: 0, y: 12 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ delay: delay * 0.04, duration: 0.5 }}
