@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Heart, Plus, Sparkles, ArrowRight } from 'lucide-react';
 import { ScrollReveal } from './ScrollReveal';
+import { ProductDetailDialog } from './ProductDetailDialog';
 import imgNastri from '@/assets/cat-nastri.jpg';
 import imgScatole from '@/assets/cat-scatole.jpg';
 import imgProtezione from '@/assets/cat-protezione.jpg';
@@ -104,14 +105,15 @@ const products: Record<string, Product[]> = {
   ],
 };
 
-function ProductCard({ product, delay, categoryId }: { product: Product; delay: number; categoryId: string }) {
+function ProductCard({ product, delay, categoryId, onOpen }: { product: Product; delay: number; categoryId: string; onOpen: (p: Product, image: string) => void }) {
   const [selectedSize, setSelectedSize] = useState(0);
   const [selectedColor, setSelectedColor] = useState(0);
   const image = productImages[product.id] || categoryImages[categoryId];
 
   return (
     <motion.article
-      className="group relative bg-background rounded-2xl hover:shadow-[0_8px_30px_rgba(0,0,0,0.06)] transition-all duration-500 overflow-hidden flex flex-col h-[400px]"
+      onClick={() => onOpen(product, image)}
+      className="group relative bg-background rounded-2xl hover:shadow-[0_8px_30px_rgba(0,0,0,0.06)] transition-all duration-500 overflow-hidden flex flex-col h-[400px] cursor-pointer"
       initial={{ opacity: 0, y: 12 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ delay: delay * 0.04, duration: 0.5 }}
@@ -138,7 +140,7 @@ function ProductCard({ product, delay, categoryId }: { product: Product; delay: 
             className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
           />
         )}
-        <button className="absolute top-3 right-3 w-7 h-7 bg-background/80 backdrop-blur rounded-full flex items-center justify-center text-muted-foreground hover:text-primary transition-colors z-20 opacity-0 group-hover:opacity-100 duration-300">
+        <button onClick={(e) => e.stopPropagation()} className="absolute top-3 right-3 w-7 h-7 bg-background/80 backdrop-blur rounded-full flex items-center justify-center text-muted-foreground hover:text-primary transition-colors z-20 opacity-0 group-hover:opacity-100 duration-300">
           <Heart className="w-3.5 h-3.5" />
         </button>
       </div>
@@ -155,14 +157,13 @@ function ProductCard({ product, delay, categoryId }: { product: Product; delay: 
           {product.desc}
         </p>
         <div className="mt-auto flex items-end justify-end transition-opacity duration-300 group-hover:opacity-0">
-          {/* Prezzo nascosto su richiesta - {product.price} */}
-          <button className="w-9 h-9 rounded-full bg-secondary/60 flex items-center justify-center text-muted-foreground hover:text-primary transition-colors">
+          <button onClick={(e) => e.stopPropagation()} className="w-9 h-9 rounded-full bg-secondary/60 flex items-center justify-center text-muted-foreground hover:text-primary transition-colors">
             <Plus className="w-4 h-4" />
           </button>
         </div>
 
         {/* Variant Panel */}
-        <div className="absolute inset-x-0 bottom-0 bg-background p-5 transform translate-y-full group-hover:translate-y-0 h-[200px] flex flex-col justify-between transition-transform duration-400">
+        <div onClick={(e) => e.stopPropagation()} className="absolute inset-x-0 bottom-0 bg-background p-5 transform translate-y-full group-hover:translate-y-0 h-[200px] flex flex-col justify-between transition-transform duration-400">
           <div className="space-y-3">
             {product.colors && product.colors.length > 0 && (
               <div>
@@ -195,8 +196,13 @@ function ProductCard({ product, delay, categoryId }: { product: Product; delay: 
               </div>
             </div>
           </div>
-          <div className="pt-3 flex items-center justify-end">
-            {/* Prezzo nascosto su richiesta - {product.price} */}
+          <div className="pt-3 flex items-center justify-between gap-2">
+            <button
+              onClick={() => onOpen(product, image)}
+              className="text-[11px] font-light tracking-wide text-foreground hover:text-primary transition-colors underline-offset-4 hover:underline"
+            >
+              Dettagli
+            </button>
             <a
               href="#contact"
               className="bg-foreground text-background text-[11px] font-normal px-4 py-2 rounded-full hover:bg-primary transition-colors tracking-wide"
@@ -212,6 +218,7 @@ function ProductCard({ product, delay, categoryId }: { product: Product; delay: 
 
 export function ProductsSection() {
   const [active, setActive] = useState('nastri-adesivi');
+  const [openProduct, setOpenProduct] = useState<{ product: Product; image: string } | null>(null);
 
   return (
     <section className="bg-background text-foreground py-28" id="productCategories">
@@ -281,11 +288,24 @@ export function ProductsSection() {
             transition={{ duration: 0.3 }}
           >
             {(products[active] || []).map((product, i) => (
-              <ProductCard key={product.id} product={product} delay={i} categoryId={active} />
+              <ProductCard
+                key={product.id}
+                product={product}
+                delay={i}
+                categoryId={active}
+                onOpen={(p, img) => setOpenProduct({ product: p, image: img })}
+              />
             ))}
           </motion.div>
         </AnimatePresence>
       </div>
+
+      <ProductDetailDialog
+        open={!!openProduct}
+        onOpenChange={(o) => !o && setOpenProduct(null)}
+        product={openProduct?.product ?? null}
+        image={openProduct?.image ?? ''}
+      />
     </section>
   );
 }
