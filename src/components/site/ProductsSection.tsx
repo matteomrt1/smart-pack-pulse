@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Heart, Plus, Sparkles, ArrowRight } from 'lucide-react';
 import { ScrollReveal } from './ScrollReveal';
+import { ProductDetailDialog } from './ProductDetailDialog';
 import imgNastri from '@/assets/cat-nastri.jpg';
 import imgScatole from '@/assets/cat-scatole.jpg';
 import imgProtezione from '@/assets/cat-protezione.jpg';
