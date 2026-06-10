@@ -28,8 +28,8 @@ export function SiteFooter() {
               <h4 className="text-[11px] uppercase tracking-[0.2em] mb-4 font-normal">Imballaggi Bustesi</h4>
               <ul className="text-[13px] text-muted-foreground space-y-1.5 font-light">
                 <li>Via Guglielmo Pepe, 5</li>
-                <li>21052 Busto Arsizio VA</li>
-                <li className="pt-2">P.IVA 000000000000</li>
+                <li>21052 Busto Arsizio (VA)</li>
+                <li className="pt-2">P.IVA / C.F. 00656270121</li>
               </ul>
               <div className="flex gap-3 mt-4">
                 <a href="#" className="text-muted-foreground hover:text-primary transition-colors" aria-label="LinkedIn">
@@ -43,7 +43,7 @@ export function SiteFooter() {
             <div>
               <h4 className="text-[11px] uppercase tracking-[0.2em] mb-4 font-normal">Serve aiuto?</h4>
               <ul className="text-[13px] text-muted-foreground space-y-1.5 font-light">
-                <li><a href="tel:+390000000000" className="hover:text-foreground transition-colors">+39 00 000 00 000</a></li>
+                <li><a href="tel:+390331628019" className="hover:text-foreground transition-colors">0331 628019</a></li>
                 <li><a href="#" className="hover:text-foreground transition-colors">WhatsApp</a></li>
                 <li><a href="#" className="hover:text-foreground transition-colors">Contatti</a></li>
                 <li><a href="#" className="hover:text-foreground transition-colors">FAQ</a></li>
