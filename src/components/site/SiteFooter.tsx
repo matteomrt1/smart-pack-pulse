@@ -68,7 +68,7 @@ export function SiteFooter() {
             <div>
               <h4 className="text-[11px] uppercase tracking-[0.2em] mb-4 font-normal">Legale</h4>
               <ul className="text-[13px] text-muted-foreground space-y-1.5 font-light">
-                <li><button onClick={() => setLegalOpen('privacy')} className="hover:text-foreground cursor-pointer transition-colors">Privacy</button></li>
+                <li><a href="#/privacy" className="hover:text-foreground transition-colors">Privacy</a></li>
                 <li><button onClick={() => setLegalOpen('cookies')} className="hover:text-foreground cursor-pointer transition-colors">Cookie</button></li>
                 <li><button onClick={() => setLegalOpen('terms')} className="hover:text-foreground cursor-pointer transition-colors">Termini</button></li>
               </ul>
