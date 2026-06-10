@@ -15,6 +15,7 @@ import AdminCatalog from '@/pages/admin/AdminCatalog';
 import AdminClients from '@/pages/admin/AdminClients';
 import SmartTapeAdvisor from '@/pages/tools/SmartTapeAdvisor';
 import ToolComingSoon from '@/pages/tools/ToolComingSoon';
+import PrivacyPolicy from '@/pages/legal/PrivacyPolicy';
 import NotFound from './pages/NotFound';
 
 const queryClient = new QueryClient();
@@ -38,6 +39,9 @@ const App = () => {
             <Route path="/tools/tco-calculator" element={<ToolComingSoon variant="tco" />} />
             <Route path="/tools/stress-test" element={<ToolComingSoon variant="stress" />} />
             <Route path="/tools/carton-analysis" element={<ToolComingSoon variant="carton" />} />
+
+            {/* Legal */}
+            <Route path="/privacy" element={<PrivacyPolicy />} />
 
             {/* Client portal */}
             <Route element={<AppLayout role={role} onRoleToggle={toggleRole} />}>
