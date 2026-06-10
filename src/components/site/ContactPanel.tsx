@@ -83,7 +83,7 @@ export function ContactPanel({ open, onClose }: ContactPanelProps) {
                   La nostra sede <ChevronDown className={`w-3 h-3 transition-transform ${officesOpen ? 'rotate-180' : ''}`} />
                 </button>
                 <ul className={`ml-4 mt-2 space-y-1.5 text-[12px] text-muted-foreground font-light overflow-hidden transition-all duration-300 ${officesOpen ? 'max-h-[200px] opacity-100' : 'max-h-0 opacity-0'}`}>
-                  <li>Busto Arsizio</li>
+                  <li>Busto Arsizio (VA)</li>
                   <li>Via Guglielmo Pepe, 5</li>
                   <li>21052 – Provincia di Varese</li>
                 </ul>

@@ -3,7 +3,7 @@ import { SiteFooter } from '@/components/site/SiteFooter';
 
 const COMPANY = {
   name: 'Imballaggi Bustesi sas',
-  address: 'Via Guglielmo Pepe 5, 21052 Busto Arsizio (VA)',
+  address: 'Via Guglielmo Pepe, 5, 21052 Busto Arsizio (VA)',
   vat: 'P.IVA / C.F. 00656270121',
   email: 'info@imballaggibustesi.it',
   privacyEmail: 'privacy@imballaggibustesi.it',
