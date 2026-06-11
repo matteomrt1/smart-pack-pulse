@@ -43,6 +43,7 @@ const App = () => {
 
             {/* Legal */}
             <Route path="/privacy" element={<PrivacyPolicy />} />
+            <Route path="/termini" element={<TermsConditions />} />
 
             {/* Client portal */}
             <Route element={<AppLayout role={role} onRoleToggle={toggleRole} />}>
