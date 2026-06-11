@@ -16,6 +16,7 @@ import AdminClients from '@/pages/admin/AdminClients';
 import SmartTapeAdvisor from '@/pages/tools/SmartTapeAdvisor';
 import ToolComingSoon from '@/pages/tools/ToolComingSoon';
 import PrivacyPolicy from '@/pages/legal/PrivacyPolicy';
+import TermsConditions from '@/pages/legal/TermsConditions';
 import NotFound from './pages/NotFound';
 
 const queryClient = new QueryClient();
