@@ -23,12 +23,14 @@ export function SiteFooter() {
     <>
       <footer className="bg-background text-foreground pt-20 pb-10">
         <div className="max-w-[1400px] mx-auto px-5 md:px-10">
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-5 gap-8 mb-12">
-            <div>
+          <div className="grid grid-cols-2 md:grid-cols-6 gap-8 mb-12">
+            <div className="col-span-2">
               <h4 className="text-[11px] uppercase tracking-[0.2em] mb-4 font-normal">Imballaggi Bustesi</h4>
               <ul className="text-[13px] text-muted-foreground space-y-1.5 font-light">
                 <li>Via Guglielmo Pepe, 5</li>
                 <li>21052 Busto Arsizio (VA)</li>
+                <li><a href="tel:+390331628019" className="hover:text-foreground transition-colors">Tel. 0331 628019</a></li>
+                <li><a href="mailto:info@imballaggibustesi.it" className="hover:text-foreground transition-colors">info@imballaggibustesi.it</a></li>
                 <li className="pt-2">P.IVA / C.F. 00656270121</li>
               </ul>
               <div className="flex gap-3 mt-4">
@@ -40,23 +42,40 @@ export function SiteFooter() {
                 </a>
               </div>
             </div>
+
             <div>
-              <h4 className="text-[11px] uppercase tracking-[0.2em] mb-4 font-normal">Serve aiuto?</h4>
+              <h4 className="text-[11px] uppercase tracking-[0.2em] mb-4 font-normal">Prodotti</h4>
               <ul className="text-[13px] text-muted-foreground space-y-1.5 font-light">
-                <li><a href="tel:+390331628019" className="hover:text-foreground transition-colors">0331 628019</a></li>
-                <li><a href="#" className="hover:text-foreground transition-colors">WhatsApp</a></li>
-                <li><a href="#" className="hover:text-foreground transition-colors">Contatti</a></li>
-                <li><a href="#" className="hover:text-foreground transition-colors">FAQ</a></li>
+                <li><a href="#productCategories" className="hover:text-foreground transition-colors">Nastri adesivi</a></li>
+                <li><a href="#productCategories" className="hover:text-foreground transition-colors">Scatole</a></li>
+                <li><a href="#productCategories" className="hover:text-foreground transition-colors">Protezione e riempimento</a></li>
+                <li><a href="#productCategories" className="hover:text-foreground transition-colors">Film e regge</a></li>
+                <li><a href="#productCategories" className="hover:text-foreground transition-colors">Sacchetti e buste</a></li>
+                <li><a href="#productCategories" className="hover:text-foreground transition-colors">Sostenibilità FSC®</a></li>
               </ul>
             </div>
+
+            <div>
+              <h4 className="text-[11px] uppercase tracking-[0.2em] mb-4 font-normal">Settori</h4>
+              <ul className="text-[13px] text-muted-foreground space-y-1.5 font-light">
+                <li><a href="#sectorsTrack" className="hover:text-foreground transition-colors">Food &amp; Bevande</a></li>
+                <li><a href="#sectorsTrack" className="hover:text-foreground transition-colors">Farmaceutica</a></li>
+                <li><a href="#sectorsTrack" className="hover:text-foreground transition-colors">Cosmetica</a></li>
+                <li><a href="#sectorsTrack" className="hover:text-foreground transition-colors">Non-Food</a></li>
+                <li><a href="#sectorsTrack" className="hover:text-foreground transition-colors">Beni industriali</a></li>
+              </ul>
+            </div>
+
             <div>
               <h4 className="text-[11px] uppercase tracking-[0.2em] mb-4 font-normal">Servizi</h4>
               <ul className="text-[13px] text-muted-foreground space-y-1.5 font-light">
-                <li><a href="#servizi" className="hover:text-foreground transition-colors">Panoramica</a></li>
-                <li><a href="#productCategories" className="hover:text-foreground transition-colors">Prodotti</a></li>
-                <li><a href="#sectorsTrack" className="hover:text-foreground transition-colors">Settori</a></li>
+                <li><a href="#servizi" className="hover:text-foreground transition-colors">Panoramica servizi</a></li>
+                <li><a href="#/tools/smart-tape-advisor" className="hover:text-foreground transition-colors">Smart Tape Advisor</a></li>
+                <li><a href="#testimonianze" className="hover:text-foreground transition-colors">Testimonianze</a></li>
+                <li><a href="#cta" className="hover:text-foreground transition-colors">Richiedi preventivo</a></li>
               </ul>
             </div>
+
             <div>
               <h4 className="text-[11px] uppercase tracking-[0.2em] mb-4 font-normal">Azienda</h4>
               <ul className="text-[13px] text-muted-foreground space-y-1.5 font-light">
@@ -64,16 +83,15 @@ export function SiteFooter() {
                 <li><a href="#sostenibilita" className="hover:text-foreground transition-colors">Sostenibilità</a></li>
                 <li><a href="#" className="hover:text-foreground transition-colors">Lavora con noi</a></li>
               </ul>
-            </div>
-            <div>
-              <h4 className="text-[11px] uppercase tracking-[0.2em] mb-4 font-normal">Legale</h4>
+              <h4 className="text-[11px] uppercase tracking-[0.2em] mb-4 mt-8 font-normal">Legale</h4>
               <ul className="text-[13px] text-muted-foreground space-y-1.5 font-light">
-                <li><a href="#/privacy" className="hover:text-foreground transition-colors">Privacy</a></li>
-                <li><button onClick={() => setLegalOpen('cookies')} className="hover:text-foreground cursor-pointer transition-colors">Cookie</button></li>
-                <li><a href="#/termini" className="hover:text-foreground transition-colors">Termini</a></li>
+                <li><a href="#/privacy" className="hover:text-foreground transition-colors">Privacy Policy</a></li>
+                <li><button onClick={() => setLegalOpen('cookies')} className="hover:text-foreground cursor-pointer transition-colors">Cookie Policy</button></li>
+                <li><a href="#/termini" className="hover:text-foreground transition-colors">Termini e Condizioni</a></li>
               </ul>
             </div>
           </div>
+
 
           <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 pt-6 border-t border-border/50">
             <p className="text-[11px] text-muted-foreground font-light">© Imballaggi Bustesi sas 2026</p>
