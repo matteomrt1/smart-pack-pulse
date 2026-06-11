@@ -70,7 +70,7 @@ export function SiteFooter() {
               <ul className="text-[13px] text-muted-foreground space-y-1.5 font-light">
                 <li><a href="#/privacy" className="hover:text-foreground transition-colors">Privacy</a></li>
                 <li><button onClick={() => setLegalOpen('cookies')} className="hover:text-foreground cursor-pointer transition-colors">Cookie</button></li>
-                <li><button onClick={() => setLegalOpen('terms')} className="hover:text-foreground cursor-pointer transition-colors">Termini</button></li>
+                <li><a href="#/termini" className="hover:text-foreground transition-colors">Termini</a></li>
               </ul>
             </div>
           </div>
