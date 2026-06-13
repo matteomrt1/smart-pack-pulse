@@ -41,13 +41,15 @@ export function SiteFooter() {
   return (
     <>
       <footer className="bg-background text-foreground pt-20 pb-10">
-        <div className="max-w-[1400px] mx-auto px-5 md:px-10">
-          <div className="grid grid-cols-2 md:grid-cols-5 gap-8 mb-10 pb-10 border-b border-border/50">
-            <div className="col-span-2 md:col-span-2">
+        <div className="w-full mx-auto px-4 md:px-6 lg:px-8">
+          <div className="grid grid-cols-2 md:grid-cols-6 gap-x-5 lg:gap-x-7 gap-y-10 mb-12">
+            <div className="min-w-0">
               <h4 className="text-[11px] uppercase tracking-[0.2em] mb-4 font-normal">Imballaggi Bustesi</h4>
               <ul className="text-[13px] text-muted-foreground space-y-1.5 font-light">
-                <li>Via Guglielmo Pepe, 5 — 21052 Busto Arsizio (VA)</li>
-                <li><a href="tel:+390331628019" className="hover:text-foreground transition-colors">Tel. 0331 628019</a> · <a href="mailto:info@imballaggibustesi.it" className="hover:text-foreground transition-colors">info@imballaggibustesi.it</a></li>
+                <li>Via Guglielmo Pepe, 5</li>
+                <li>21052 Busto Arsizio (VA)</li>
+                <li><a href="tel:+390331628019" className="hover:text-foreground transition-colors">0331 628019</a></li>
+                <li><a href="mailto:info@imballaggibustesi.it" className="hover:text-foreground transition-colors break-words">info@imballaggibustesi.it</a></li>
                 <li className="pt-1">P.IVA / C.F. 00656270121</li>
               </ul>
               <div className="flex gap-3 mt-4">
@@ -59,10 +61,8 @@ export function SiteFooter() {
                 </a>
               </div>
             </div>
-          </div>
 
-          <div className="grid grid-cols-2 md:grid-cols-5 gap-8 mb-12">
-            <div>
+            <div className="min-w-0">
               <h4 className="text-[11px] uppercase tracking-[0.2em] mb-4 font-normal">Prodotti</h4>
               <ul className="text-[13px] text-muted-foreground space-y-1.5 font-light">
                 <li><SectionLink id="productCategories">Nastri adesivi</SectionLink></li>
@@ -74,7 +74,7 @@ export function SiteFooter() {
               </ul>
             </div>
 
-            <div>
+            <div className="min-w-0">
               <h4 className="text-[11px] uppercase tracking-[0.2em] mb-4 font-normal">Settori</h4>
               <ul className="text-[13px] text-muted-foreground space-y-1.5 font-light">
                 <li><SectionLink id="sectorsTrack">Food &amp; Bevande</SectionLink></li>
@@ -85,7 +85,7 @@ export function SiteFooter() {
               </ul>
             </div>
 
-            <div>
+            <div className="min-w-0">
               <h4 className="text-[11px] uppercase tracking-[0.2em] mb-4 font-normal">Servizi</h4>
               <ul className="text-[13px] text-muted-foreground space-y-1.5 font-light">
                 <li><SectionLink id="servizi">Panoramica</SectionLink></li>
@@ -95,7 +95,7 @@ export function SiteFooter() {
               </ul>
             </div>
 
-            <div>
+            <div className="min-w-0">
               <h4 className="text-[11px] uppercase tracking-[0.2em] mb-4 font-normal">Azienda</h4>
               <ul className="text-[13px] text-muted-foreground space-y-1.5 font-light">
                 <li><SectionLink id="chi-siamo">Chi siamo</SectionLink></li>
@@ -104,7 +104,7 @@ export function SiteFooter() {
               </ul>
             </div>
 
-            <div>
+            <div className="min-w-0">
               <h4 className="text-[11px] uppercase tracking-[0.2em] mb-4 font-normal">Legale</h4>
               <ul className="text-[13px] text-muted-foreground space-y-1.5 font-light">
                 <li><a href="#/privacy" className="hover:text-foreground transition-colors">Privacy Policy</a></li>
