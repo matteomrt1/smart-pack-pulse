@@ -42,15 +42,13 @@ export function SiteFooter() {
     <>
       <footer className="bg-background text-foreground pt-20 pb-10">
         <div className="max-w-[1400px] mx-auto px-5 md:px-10">
-          <div className="grid grid-cols-2 md:grid-cols-12 gap-8 mb-12">
-            <div className="col-span-2 md:col-span-4">
+          <div className="grid grid-cols-2 md:grid-cols-5 gap-8 mb-10 pb-10 border-b border-border/50">
+            <div className="col-span-2 md:col-span-2">
               <h4 className="text-[11px] uppercase tracking-[0.2em] mb-4 font-normal">Imballaggi Bustesi</h4>
               <ul className="text-[13px] text-muted-foreground space-y-1.5 font-light">
-                <li>Via Guglielmo Pepe, 5</li>
-                <li>21052 Busto Arsizio (VA)</li>
-                <li><a href="tel:+390331628019" className="hover:text-foreground transition-colors">Tel. 0331 628019</a></li>
-                <li><a href="mailto:info@imballaggibustesi.it" className="hover:text-foreground transition-colors">info@imballaggibustesi.it</a></li>
-                <li className="pt-2">P.IVA / C.F. 00656270121</li>
+                <li>Via Guglielmo Pepe, 5 — 21052 Busto Arsizio (VA)</li>
+                <li><a href="tel:+390331628019" className="hover:text-foreground transition-colors">Tel. 0331 628019</a> · <a href="mailto:info@imballaggibustesi.it" className="hover:text-foreground transition-colors">info@imballaggibustesi.it</a></li>
+                <li className="pt-1">P.IVA / C.F. 00656270121</li>
               </ul>
               <div className="flex gap-3 mt-4">
                 <a href="#" className="text-muted-foreground hover:text-primary transition-colors" aria-label="LinkedIn">
@@ -61,20 +59,22 @@ export function SiteFooter() {
                 </a>
               </div>
             </div>
+          </div>
 
-            <div className="md:col-span-2">
+          <div className="grid grid-cols-2 md:grid-cols-5 gap-8 mb-12">
+            <div>
               <h4 className="text-[11px] uppercase tracking-[0.2em] mb-4 font-normal">Prodotti</h4>
               <ul className="text-[13px] text-muted-foreground space-y-1.5 font-light">
                 <li><SectionLink id="productCategories">Nastri adesivi</SectionLink></li>
                 <li><SectionLink id="productCategories">Scatole</SectionLink></li>
-                <li><SectionLink id="productCategories">Protezione e riempimento</SectionLink></li>
+                <li><SectionLink id="productCategories">Protezione</SectionLink></li>
                 <li><SectionLink id="productCategories">Film e regge</SectionLink></li>
-                <li><SectionLink id="productCategories">Sacchetti e buste</SectionLink></li>
-                <li><SectionLink id="sostenibilita">Sostenibilità FSC®</SectionLink></li>
+                <li><SectionLink id="productCategories">Sacchetti</SectionLink></li>
+                <li><SectionLink id="sostenibilita">FSC®</SectionLink></li>
               </ul>
             </div>
 
-            <div className="md:col-span-2">
+            <div>
               <h4 className="text-[11px] uppercase tracking-[0.2em] mb-4 font-normal">Settori</h4>
               <ul className="text-[13px] text-muted-foreground space-y-1.5 font-light">
                 <li><SectionLink id="sectorsTrack">Food &amp; Bevande</SectionLink></li>
@@ -85,13 +85,13 @@ export function SiteFooter() {
               </ul>
             </div>
 
-            <div className="md:col-span-2">
+            <div>
               <h4 className="text-[11px] uppercase tracking-[0.2em] mb-4 font-normal">Servizi</h4>
               <ul className="text-[13px] text-muted-foreground space-y-1.5 font-light">
-                <li><SectionLink id="servizi">Panoramica servizi</SectionLink></li>
+                <li><SectionLink id="servizi">Panoramica</SectionLink></li>
                 <li><a href="#/tools/smart-tape-advisor" className="hover:text-foreground transition-colors">Smart Tape Advisor</a></li>
                 <li><SectionLink id="testimonianze">Testimonianze</SectionLink></li>
-                <li><SectionLink id="cta">Richiedi preventivo</SectionLink></li>
+                <li><SectionLink id="cta">Preventivo</SectionLink></li>
               </ul>
             </div>
 
@@ -109,7 +109,7 @@ export function SiteFooter() {
               <ul className="text-[13px] text-muted-foreground space-y-1.5 font-light">
                 <li><a href="#/privacy" className="hover:text-foreground transition-colors">Privacy Policy</a></li>
                 <li><button onClick={() => setLegalOpen('cookies')} className="hover:text-foreground cursor-pointer transition-colors text-left">Cookie Policy</button></li>
-                <li><a href="#/termini" className="hover:text-foreground transition-colors">Termini e Condizioni</a></li>
+                <li><a href="#/termini" className="hover:text-foreground transition-colors">Termini</a></li>
               </ul>
             </div>
           </div>
