@@ -19,12 +19,31 @@ function InstagramIcon({ className }: { className?: string }) {
 export function SiteFooter() {
   const [legalOpen, setLegalOpen] = useState<string | null>(null);
 
+  const scrollToId = (id: string) => (e: React.MouseEvent) => {
+    e.preventDefault();
+    // If we're not on the landing page, navigate home first then scroll
+    if (window.location.hash && window.location.hash !== '#/' && window.location.hash !== '') {
+      window.location.hash = '#/';
+      setTimeout(() => {
+        document.getElementById(id)?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }, 80);
+      return;
+    }
+    document.getElementById(id)?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  };
+
+  const SectionLink = ({ id, children }: { id: string; children: React.ReactNode }) => (
+    <button onClick={scrollToId(id)} className="hover:text-foreground transition-colors text-left cursor-pointer">
+      {children}
+    </button>
+  );
+
   return (
     <>
       <footer className="bg-background text-foreground pt-20 pb-10">
         <div className="max-w-[1400px] mx-auto px-5 md:px-10">
-          <div className="grid grid-cols-2 md:grid-cols-6 gap-8 mb-12">
-            <div className="col-span-2">
+          <div className="grid grid-cols-2 md:grid-cols-12 gap-8 mb-12">
+            <div className="col-span-2 md:col-span-4">
               <h4 className="text-[11px] uppercase tracking-[0.2em] mb-4 font-normal">Imballaggi Bustesi</h4>
               <ul className="text-[13px] text-muted-foreground space-y-1.5 font-light">
                 <li>Via Guglielmo Pepe, 5</li>
@@ -43,50 +62,53 @@ export function SiteFooter() {
               </div>
             </div>
 
-            <div>
+            <div className="md:col-span-2">
               <h4 className="text-[11px] uppercase tracking-[0.2em] mb-4 font-normal">Prodotti</h4>
               <ul className="text-[13px] text-muted-foreground space-y-1.5 font-light">
-                <li><a href="#productCategories" className="hover:text-foreground transition-colors">Nastri adesivi</a></li>
-                <li><a href="#productCategories" className="hover:text-foreground transition-colors">Scatole</a></li>
-                <li><a href="#productCategories" className="hover:text-foreground transition-colors">Protezione e riempimento</a></li>
-                <li><a href="#productCategories" className="hover:text-foreground transition-colors">Film e regge</a></li>
-                <li><a href="#productCategories" className="hover:text-foreground transition-colors">Sacchetti e buste</a></li>
-                <li><a href="#productCategories" className="hover:text-foreground transition-colors">Sostenibilità FSC®</a></li>
+                <li><SectionLink id="productCategories">Nastri adesivi</SectionLink></li>
+                <li><SectionLink id="productCategories">Scatole</SectionLink></li>
+                <li><SectionLink id="productCategories">Protezione e riempimento</SectionLink></li>
+                <li><SectionLink id="productCategories">Film e regge</SectionLink></li>
+                <li><SectionLink id="productCategories">Sacchetti e buste</SectionLink></li>
+                <li><SectionLink id="sostenibilita">Sostenibilità FSC®</SectionLink></li>
               </ul>
             </div>
 
-            <div>
+            <div className="md:col-span-2">
               <h4 className="text-[11px] uppercase tracking-[0.2em] mb-4 font-normal">Settori</h4>
               <ul className="text-[13px] text-muted-foreground space-y-1.5 font-light">
-                <li><a href="#sectorsTrack" className="hover:text-foreground transition-colors">Food &amp; Bevande</a></li>
-                <li><a href="#sectorsTrack" className="hover:text-foreground transition-colors">Farmaceutica</a></li>
-                <li><a href="#sectorsTrack" className="hover:text-foreground transition-colors">Cosmetica</a></li>
-                <li><a href="#sectorsTrack" className="hover:text-foreground transition-colors">Non-Food</a></li>
-                <li><a href="#sectorsTrack" className="hover:text-foreground transition-colors">Beni industriali</a></li>
+                <li><SectionLink id="sectorsTrack">Food &amp; Bevande</SectionLink></li>
+                <li><SectionLink id="sectorsTrack">Farmaceutica</SectionLink></li>
+                <li><SectionLink id="sectorsTrack">Cosmetica</SectionLink></li>
+                <li><SectionLink id="sectorsTrack">Non-Food</SectionLink></li>
+                <li><SectionLink id="sectorsTrack">Beni industriali</SectionLink></li>
               </ul>
             </div>
 
-            <div>
+            <div className="md:col-span-2">
               <h4 className="text-[11px] uppercase tracking-[0.2em] mb-4 font-normal">Servizi</h4>
               <ul className="text-[13px] text-muted-foreground space-y-1.5 font-light">
-                <li><a href="#servizi" className="hover:text-foreground transition-colors">Panoramica servizi</a></li>
+                <li><SectionLink id="servizi">Panoramica servizi</SectionLink></li>
                 <li><a href="#/tools/smart-tape-advisor" className="hover:text-foreground transition-colors">Smart Tape Advisor</a></li>
-                <li><a href="#testimonianze" className="hover:text-foreground transition-colors">Testimonianze</a></li>
-                <li><a href="#cta" className="hover:text-foreground transition-colors">Richiedi preventivo</a></li>
+                <li><SectionLink id="testimonianze">Testimonianze</SectionLink></li>
+                <li><SectionLink id="cta">Richiedi preventivo</SectionLink></li>
               </ul>
             </div>
 
             <div>
               <h4 className="text-[11px] uppercase tracking-[0.2em] mb-4 font-normal">Azienda</h4>
               <ul className="text-[13px] text-muted-foreground space-y-1.5 font-light">
-                <li><a href="#chi-siamo" className="hover:text-foreground transition-colors">Chi siamo</a></li>
-                <li><a href="#sostenibilita" className="hover:text-foreground transition-colors">Sostenibilità</a></li>
-                <li><a href="#" className="hover:text-foreground transition-colors">Lavora con noi</a></li>
+                <li><SectionLink id="chi-siamo">Chi siamo</SectionLink></li>
+                <li><SectionLink id="sostenibilita">Sostenibilità</SectionLink></li>
+                <li><SectionLink id="cta">Lavora con noi</SectionLink></li>
               </ul>
-              <h4 className="text-[11px] uppercase tracking-[0.2em] mb-4 mt-8 font-normal">Legale</h4>
+            </div>
+
+            <div>
+              <h4 className="text-[11px] uppercase tracking-[0.2em] mb-4 font-normal">Legale</h4>
               <ul className="text-[13px] text-muted-foreground space-y-1.5 font-light">
                 <li><a href="#/privacy" className="hover:text-foreground transition-colors">Privacy Policy</a></li>
-                <li><button onClick={() => setLegalOpen('cookies')} className="hover:text-foreground cursor-pointer transition-colors">Cookie Policy</button></li>
+                <li><button onClick={() => setLegalOpen('cookies')} className="hover:text-foreground cursor-pointer transition-colors text-left">Cookie Policy</button></li>
                 <li><a href="#/termini" className="hover:text-foreground transition-colors">Termini e Condizioni</a></li>
               </ul>
             </div>
@@ -106,19 +128,13 @@ export function SiteFooter() {
           <div className="absolute inset-0 flex items-center justify-center p-4">
             <section className="w-full max-w-[720px] bg-background rounded-3xl overflow-hidden">
               <header className="flex items-center justify-between gap-3 px-7 py-5 border-b border-border/50">
-                <h3 className="text-[14px] font-normal tracking-[0.05em]">
-                  {legalOpen === 'privacy' ? 'Informativa Privacy' : legalOpen === 'cookies' ? 'Cookie Policy' : 'Termini e condizioni'}
-                </h3>
+                <h3 className="text-[14px] font-normal tracking-[0.05em]">Cookie Policy</h3>
                 <button onClick={() => setLegalOpen(null)} className="text-[11px] tracking-[0.15em] uppercase text-muted-foreground hover:text-foreground cursor-pointer transition-colors font-light">
                   Chiudi
                 </button>
               </header>
               <div className="px-7 py-6 max-h-[60vh] overflow-auto text-[14px] leading-relaxed text-muted-foreground font-light">
-                <p>
-                  {legalOpen === 'privacy' && 'Informativa Privacy – Imballaggi Bustesi sas, Via Guglielmo Pepe, 5, 21052 Busto Arsizio (VA). I dati personali vengono trattati nel rispetto del GDPR (Regolamento UE 2016/679).'}
-                  {legalOpen === 'cookies' && 'Cookie Policy – Questo sito utilizza cookie tecnici necessari al funzionamento e cookie analitici per migliorare l\'esperienza di navigazione.'}
-                  {legalOpen === 'terms' && 'Termini e Condizioni – L\'utilizzo di questo sito è soggetto ai presenti termini. Imballaggi Bustesi sas si riserva il diritto di modificare i contenuti senza preavviso.'}
-                </p>
+                <p>Questo sito utilizza esclusivamente cookie tecnici necessari al corretto funzionamento e cookie analitici aggregati per migliorare l'esperienza di navigazione. Non vengono utilizzati cookie di profilazione né di terze parti per finalità di marketing.</p>
               </div>
             </section>
           </div>
