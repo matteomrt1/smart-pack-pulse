@@ -14,6 +14,7 @@ import AdminDashboard from '@/pages/admin/AdminDashboard';
 import AdminCatalog from '@/pages/admin/AdminCatalog';
 import AdminClients from '@/pages/admin/AdminClients';
 import SmartTapeAdvisor from '@/pages/tools/SmartTapeAdvisor';
+import TcoCalculator from '@/pages/tools/TcoCalculator';
 import ToolComingSoon from '@/pages/tools/ToolComingSoon';
 import PrivacyPolicy from '@/pages/legal/PrivacyPolicy';
 import TermsConditions from '@/pages/legal/TermsConditions';
@@ -37,7 +38,7 @@ const App = () => {
             {/* Tools */}
             <Route path="/tools/smart-tape-advisor" element={<SmartTapeAdvisor />} />
             <Route path="/tools/performance-configurator" element={<ToolComingSoon variant="performance" />} />
-            <Route path="/tools/tco-calculator" element={<ToolComingSoon variant="tco" />} />
+            <Route path="/tools/tco-calculator" element={<TcoCalculator />} />
             <Route path="/tools/stress-test" element={<ToolComingSoon variant="stress" />} />
             <Route path="/tools/carton-analysis" element={<ToolComingSoon variant="carton" />} />
 
