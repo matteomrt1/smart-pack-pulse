@@ -41,8 +41,8 @@ export function SiteFooter() {
   return (
     <>
       <footer className="bg-background text-foreground pt-20 pb-10">
-        <div className="w-full mx-auto px-4 md:px-6 lg:px-8">
-          <div className="grid grid-cols-2 md:grid-cols-6 gap-x-5 lg:gap-x-7 gap-y-10 mb-12">
+        <div className="w-full max-w-[1680px] mx-auto px-6 md:px-10 xl:px-12">
+          <div className="grid grid-cols-2 md:grid-cols-6 gap-x-8 lg:gap-x-10 xl:gap-x-12 gap-y-10 mb-12">
             <div className="min-w-0">
               <h4 className="text-[11px] uppercase tracking-[0.2em] mb-4 font-normal">Imballaggi Bustesi</h4>
               <ul className="text-[13px] text-muted-foreground space-y-1.5 font-light">
