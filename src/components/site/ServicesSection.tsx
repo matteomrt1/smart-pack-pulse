@@ -26,7 +26,7 @@ const b2bTools = [
     desc: 'Total Cost of Ownership: dimostriamo con i numeri quanto risparmi passando a un nastro premium.',
     icon: Calculator,
     route: '/tools/tco-calculator',
-    available: false,
+    available: true,
   },
   {
     title: 'Test di Stress',
