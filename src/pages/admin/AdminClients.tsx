@@ -15,11 +15,15 @@ export default function AdminClients() {
   );
 
   return (
-    <div className="p-6 lg:p-8 max-w-6xl mx-auto space-y-6">
-      <div>
-        <h1 className="text-2xl font-bold">Gestione Clienti</h1>
-        <p className="text-muted-foreground mt-1">Anagrafica clienti e storico interazioni</p>
+    <div className="px-6 md:px-12 py-10 md:py-14 max-w-6xl mx-auto space-y-8">
+      <div className="space-y-3">
+        <span className="text-[0.65rem] tracking-[0.25em] uppercase text-muted-foreground font-light">
+          Area Interna
+        </span>
+        <h1 className="text-3xl md:text-4xl font-light tracking-tight">Gestione Clienti</h1>
+        <p className="text-sm text-muted-foreground font-light">Anagrafica clienti e storico interazioni</p>
       </div>
+
 
       <div className="relative max-w-xs">
         <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
