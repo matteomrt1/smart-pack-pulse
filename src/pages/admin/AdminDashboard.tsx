@@ -5,11 +5,15 @@ import { mockConfigs, mockClients } from '@/data/mockData';
 
 export default function AdminDashboard() {
   return (
-    <div className="p-6 lg:p-8 max-w-6xl mx-auto space-y-8">
-      <div>
-        <h1 className="text-2xl font-bold">Pannello di Gestione</h1>
-        <p className="text-muted-foreground mt-1">Panoramica attività e statistiche</p>
+    <div className="px-6 md:px-12 py-10 md:py-14 max-w-6xl mx-auto space-y-10">
+      <div className="space-y-3">
+        <span className="text-[0.65rem] tracking-[0.25em] uppercase text-muted-foreground font-light">
+          Area Interna
+        </span>
+        <h1 className="text-3xl md:text-4xl font-light tracking-tight">Pannello di Gestione</h1>
+        <p className="text-sm text-muted-foreground font-light">Panoramica attività e statistiche</p>
       </div>
+
 
       {/* Stats */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
